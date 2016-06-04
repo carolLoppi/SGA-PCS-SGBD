@@ -9,6 +9,7 @@ public class Entrada {
 	private OperadorSistema operador;
 	private Date dataOperacao;
 	private Double quantidadeMaterial;
+	//incluir material que será alocado para então passar para alocação efetuar a operação
 	
 	public Entrada(Integer id, Alocacao alocacao, OperadorSistema operador, Date dataOperacao,
 			Double quantidadeMaterial) {

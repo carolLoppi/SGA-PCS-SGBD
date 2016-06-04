@@ -7,7 +7,10 @@ public class Material {
 	private String descricao;
 	private String unidadeDeMedida;
 	private Double precoDeMercado;
-	
+	/*incluir setor seria interessante. O que temos agora é unidirecional. 
+	Ou seja, apenas saberemos onde um dado material está alocado se fizermos 
+	uma busca em todos os setores de almoxarifados o que pode ser custoso */
+	//falta dados fornecedor
 	public Material(Integer id, String codigo, String descricao, String unidadeDeMedida, Double precoDeMercado) {
 		super();
 		this.id = id;

@@ -6,6 +6,7 @@ public class Setor {
 	private Almoxarifado almoxarifado;
 	private String nome;
 	private Long capacidade;
+	//falta lista de materiais alocados neste setor
 	
 	public Setor(Integer id, Almoxarifado almoxarifado, String nome, Long capacidade) {
 		super();

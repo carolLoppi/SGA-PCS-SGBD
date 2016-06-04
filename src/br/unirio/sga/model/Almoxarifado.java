@@ -5,6 +5,7 @@ public class Almoxarifado {
 	private Integer id;
 	private String cnpj;
 	private Endereco endereco;
+	//falta lista de setores
 	
 	public Almoxarifado(Integer id, String cnpj, Endereco endereco) {
 		super();

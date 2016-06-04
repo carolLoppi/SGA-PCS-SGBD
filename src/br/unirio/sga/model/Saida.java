@@ -9,6 +9,7 @@ public class Saida {
 	private Double quantidade;
 	private String nomeDepartamento;
 	private Date dataOperacao;
+//	incluir material que será desalocado para então passar para alocação efetuar a operação
 	
 	public Saida(Integer id, OperadorSistema operador, Alocacao alocacao, Double quantidade, String nomeDepartamento,
 			Date dataOperacao) {
