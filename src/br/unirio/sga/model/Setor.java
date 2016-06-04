@@ -1,20 +1,22 @@
 package br.unirio.sga.model;
 
+import java.util.List;
+
 public class Setor {
 	
 	private Integer id;
 	private Almoxarifado almoxarifado;
 	private String nome;
 	private Long capacidade;
-	//falta lista de materiais alocados neste setor
+	private List<Material> materiais;
 	
 	public Setor(Integer id, Almoxarifado almoxarifado, String nome, Long capacidade) {
-		super();
 		this.id = id;
 		this.almoxarifado = almoxarifado;
 		this.nome = nome;
 		this.capacidade = capacidade;
 	}
+	
 	public Integer getId() {
 		return id;
 	}
@@ -38,5 +40,14 @@ public class Setor {
 	}
 	public void setCapacidade(Long capacidade) {
 		this.capacidade = capacidade;
+	}
+
+	public List<Material> getMateriais() {
+		return materiais;
+	}
+
+	public void setMateriais(List<Material> materiais) {
+		this.materiais = materiais;
 	}	
+	
 }

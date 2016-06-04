@@ -7,7 +7,6 @@ public class Alocacao {
 	private Double quantidade;
 
 	public Alocacao(Integer id, Material material, Setor setor, Double quantidade) {
-		super();
 		this.id = id;
 		this.material = material;
 		this.setor = setor;

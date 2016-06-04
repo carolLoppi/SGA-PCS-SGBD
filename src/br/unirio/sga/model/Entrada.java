@@ -8,18 +8,14 @@ public class Entrada {
 	private Alocacao alocacao;
 	private OperadorSistema operador;
 	private Date dataOperacao;
-	private Double quantidadeMaterial;
-	//incluir material que será alocado para então passar para alocação efetuar a operação
 	
-	public Entrada(Integer id, Alocacao alocacao, OperadorSistema operador, Date dataOperacao,
-			Double quantidadeMaterial) {
-		super();
+	public Entrada(Integer id, Alocacao alocacao, OperadorSistema operador, Date dataOperacao) {
 		this.id = id;
 		this.alocacao = alocacao;
 		this.operador = operador;
 		this.dataOperacao = dataOperacao;
-		this.quantidadeMaterial = quantidadeMaterial;
 	}
+	
 	public Integer getId() {
 		return id;
 	}
@@ -38,18 +34,11 @@ public class Entrada {
 	public void setDataOperacao(Date dataOperacao) {
 		this.dataOperacao = dataOperacao;
 	}
-	public Double getQuantidadeMaterial() {
-		return quantidadeMaterial;
-	}
-	public void setQuantidadeMaterial(Double quantidadeMaterial) {
-		this.quantidadeMaterial = quantidadeMaterial;
-	}
 	public OperadorSistema getOperador() {
 		return operador;
 	}
 	public void setOperador(OperadorSistema operador) {
 		this.operador = operador;
 	}
-	
 	
 }

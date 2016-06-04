@@ -10,7 +10,6 @@ public class Fornecedor {
 	private Endereco endereco;
 	
 	public Fornecedor(Integer id, String cnpj, String nome, String telefone, String codigo, Endereco endereco) {
-		super();
 		this.id = id;
 		this.cnpj = cnpj;
 		this.nome = nome;

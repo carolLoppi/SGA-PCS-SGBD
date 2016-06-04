@@ -8,7 +8,6 @@ public class OperadorSistema {
 	private String senha;
 
 	public OperadorSistema(Integer id, String nome, String cpf, String login, String senha) {
-		super();
 		this.id = id;
 		this.nome = nome;
 		this.cpf = cpf;

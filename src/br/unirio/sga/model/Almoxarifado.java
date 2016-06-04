@@ -1,14 +1,15 @@
 package br.unirio.sga.model;
 
+import java.util.List;
+
 public class Almoxarifado {
 	
 	private Integer id;
 	private String cnpj;
 	private Endereco endereco;
-	//falta lista de setores
+	private List<Setor> setores;
 	
 	public Almoxarifado(Integer id, String cnpj, Endereco endereco) {
-		super();
 		this.id = id;
 		this.cnpj = cnpj;
 		this.endereco = endereco;
@@ -31,5 +32,14 @@ public class Almoxarifado {
 	}
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
+	}
+
+	public List<Setor> getSetores() {
+		return setores;
+	}
+
+	public void setSetores(List<Setor> setores) {
+		this.setores = setores;
 	}	
+
 }
