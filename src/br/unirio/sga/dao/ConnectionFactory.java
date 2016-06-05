@@ -9,6 +9,7 @@ import java.sql.SQLException;
 public class ConnectionFactory {
 	public static Connection get() {
 			try{
+				//TO-DO: Não consegue efetuar a conexão. Averiguar o motivo. 
 				Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/SGAData", "postgres","admin");
 				if(con!=null)
 					System.out.println("Connected");

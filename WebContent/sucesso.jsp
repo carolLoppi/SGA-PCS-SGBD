@@ -7,10 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<% 	String os = (String) request.getAttribute (Constantes.NOME_OPERADOR);
-%>
-	<input type="hidden" name="id" value="<%=os%>"/>
-	Seja bem vindo, <%=os%>
+	Seja bem vindo!
 	
 
 </body>
