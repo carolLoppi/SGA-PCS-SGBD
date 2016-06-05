@@ -5,12 +5,17 @@ public class Alocacao {
 	private Material material;
 	private Setor setor;
 	private Double quantidade;
+	private Fornecedor fornecedor;
 
-	public Alocacao(Integer id, Material material, Setor setor, Double quantidade) {
+	
+
+	public Alocacao(Integer id, Material material, Setor setor, Double quantidade, Fornecedor fornecedor) {
+		super();
 		this.id = id;
 		this.material = material;
 		this.setor = setor;
 		this.quantidade = quantidade;
+		this.fornecedor = fornecedor;
 	}
 
 	public Integer getId() {
@@ -44,5 +49,15 @@ public class Alocacao {
 	public void setQuantidade(Double quantidade) {
 		this.quantidade = quantidade;
 	}
+
+	public Fornecedor getFornecedor() {
+		return fornecedor;
+	}
+
+	public void setFornecedor(Fornecedor fornecedor) {
+		this.fornecedor = fornecedor;
+	}
+	
+	
 
 }

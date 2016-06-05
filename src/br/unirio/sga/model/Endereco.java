@@ -1,7 +1,7 @@
 package br.unirio.sga.model;
 
 public class Endereco {
-
+	private String id;
 	private String logradouro;
 	private Integer numero;
 	private String complemento;
@@ -9,13 +9,26 @@ public class Endereco {
 	private String cidade;
 	private String estado;
 
-	public Endereco(String logradouro, Integer numero, String complemento, String cep, String cidade, String estado) {
+	
+
+	public Endereco(String id, String logradouro, Integer numero, String complemento, String cep, String cidade,
+			String estado) {
+		super();
+		this.id = id;
 		this.logradouro = logradouro;
 		this.numero = numero;
 		this.complemento = complemento;
 		this.cep = cep;
 		this.cidade = cidade;
 		this.estado = estado;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public String getLogradouro() {

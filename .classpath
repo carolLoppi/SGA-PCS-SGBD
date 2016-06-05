@@ -9,5 +9,6 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="lib" path="/Users/Caroline/Documents/workspace/javax.servlet-api-3.1.0.jar"/>
+	<classpathentry kind="lib" path="/Users/Caroline/Documents/workspace/projeto/SGA-PCS-SGBD/dependencies/postgresql-9.1-903.jdbc4.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
