@@ -4,9 +4,55 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Login</title>
 </head>
 <body>
-login lalallalal
+Login Não Funcional
+<%
+	//String error = (String) request.getAttribute (Constants.ERROR_KEY);
+	
+// 	if (error != null)
+// 		out.println ("<p><font color=red><b>" + error + "</b></font></p>");
+	
+%>
+
+
+<form method="get" action="/sucesso">
+	
+	<table>
+	<tr>
+	  <th align="right">
+		Nome:
+	  </th>
+	  <td align="left">
+		<input type="text" name="login" size="64"/>
+	  </td>
+	</tr>
+
+	<tr>
+	  <th align="right">
+		Senha:
+	  </th>
+	  <td align="left">
+		<input type="text" name="senha" size="12"/>
+	  </td>
+	</tr>								
+
+	<tr>
+	  <td colspan="2" align="right">
+		<input type="submit"/>
+	  </td>									
+	</tr>
+	
+	</table>					
+
+</form>
+
+<p>
+<!--   <a href="/list.do">Retorna para a lista</a> -->
+</p>
+
+
+
 </body>
 </html>

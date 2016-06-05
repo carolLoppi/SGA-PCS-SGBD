@@ -1,12 +1,16 @@
 package br.unirio.sga.model;
 
+/*
+ * Classe responsável por efetuar transações de entrada e saída de materiais do sistema
+ */
+
 public class Alocacao {
 	private Integer id;
 	private Material material;
 	private Setor setor;
 	private Double quantidade;
 	private Fornecedor fornecedor;
-
+	
 	
 
 	public Alocacao(Integer id, Material material, Setor setor, Double quantidade, Fornecedor fornecedor) {

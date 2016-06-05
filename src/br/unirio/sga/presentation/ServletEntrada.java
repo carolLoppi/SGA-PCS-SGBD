@@ -1,4 +1,4 @@
-package br.unirio.sga.view;
+package br.unirio.sga.presentation;
 
 import java.io.IOException;
 
@@ -9,9 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.unirio.sga.model.*;
-
-public class ServletSGA extends HttpServlet {
+/* 
+ * Servlet responsável por atuar no processamento de entrada de material.
+ */
+public class ServletEntrada extends HttpServlet{
 
 	private static final long serialVersionUID = 1L;
 
@@ -21,7 +22,8 @@ public class ServletSGA extends HttpServlet {
 		// request.setAttribute (Constants.CD_KEY, cd);
 		// request.setAttribute (Constants.INDEX_KEY, -1);
 		ServletContext context = getServletContext();
-		RequestDispatcher rd = context.getRequestDispatcher("/login.jsp");
+		RequestDispatcher rd = context.getRequestDispatcher("/entrada.jsp");
 		rd.forward(request, response);
 	}
+	
 }
