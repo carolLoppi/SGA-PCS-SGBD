@@ -2,37 +2,43 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Login</title>
-</head>
-<body>
-	Login
-	<form method="post" action="authentication">
-		<input type="hidden" name="index" value="<%=request.getAttribute("index")%>"/>
-	
-	
-		<table>
-			<tr>
-				<th align="right">Nome:</th>
-				<td align="left"><input type="text" name="login" size="64" /></td>
-			</tr>
-
-			<tr>
-				<th align="right">Senha:</th>
-				<td align="left"><input type="text" name="senha" size="12" /></td>
-			</tr>
-
-			<tr>
-				<td colspan="2" align="right"><input type="submit" /></td>
-			</tr>
-
-		</table>
-
-	</form>
-
-
-
-
-</body>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Login</title>
+		<link rel="stylesheet" type="text/css" href="./resources/bootstrap/css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="./resources/bootstrap/css/bootstrap-theme.min.css" />
+ 		<script src="./resources/bootstrap/js/bootstrap.min.js"></script>
+	</head>
+	<body>
+		<div class="top-border">oi</div>
+		<form method="post" action="authentication">
+			<input type="hidden" name="index" value="<%=request.getAttribute("index")%>"/>
+			
+			<br><br><br>
+			<div class="container">
+				<div class="row col-md-12">
+					<div class="col-md-6 col-md-offset-3">
+						<div class="panel panel-default">
+							<div class="panel-body">
+								<img src="./resources/bootstrap/img/logoSGA.jpg" width="100" height="100">
+								<h3>Sistema de Gestão de Almoxarifado</h3>
+								<hr>
+								<form>
+									<div class="form-group">
+										<label>Nome de Usuario</label>
+										<input type="text" placeholder="Digite o nome de usuario" class="form-control" name="login"/>
+									</div>
+									<div class="form-group">
+										<label>Senha</label>
+										<input type="text" class="form-control" placeholder="Digite a Senha" name="senha"/>
+									</div>
+									<button type="submit" class="btn btn-primary pull-right">Entrar</button>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</body>
 </html>
