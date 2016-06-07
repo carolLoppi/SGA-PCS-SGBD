@@ -6,33 +6,25 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 /* 
- * Verificar possibilidade de remoção
+ * Posteriormente criar executaQuery com retorno de apenas um elemento se for necessário
  */
 public class JDBCConnection {
 
-	public static void main(String[] argv) {
+	public static ResultSet executaQuery(String query) {
 
 		try{
-
-			Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/SGAData", "postgres","admin");
-			if(con!=null)
-				System.out.println("Connected");
-			
-			//Statement st = con.createStatement();
-			//st.execute("INSERT INTO endereco(endereco_id, logradouro, numero, complemento, cep, cidade, estado) VALUES (2, 'Rua da Moema', 423, 2201, '22051070', 'Moema', 'SP');");
 		
+			Class.forName("org.postgresql.Driver");		
+			Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/SGAData", "postgres","admin");
 			
 			Statement sql = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
-			ResultSet clientes = sql.executeQuery("select * from endereco"); 
-			while(clientes.next())
-				System.out.println(clientes.getString("estado"));
-			
-			clientes.close();
-			
+			ResultSet resultSet = sql.executeQuery(query); 
+			return resultSet;
 			
 		} catch (Exception e) {
 			
 			e.printStackTrace();
+			return null;
 
 		}
 	}

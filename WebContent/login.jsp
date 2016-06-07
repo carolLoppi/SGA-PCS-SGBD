@@ -10,7 +10,7 @@
  		<script src="./resources/bootstrap/js/bootstrap.min.js"></script>
 	</head>
 	<body>
-		<div class="top-border">oi</div>
+		<div class="top-border"></div>
 		<form method="post" action="authentication">
 			<input type="hidden" name="index" value="<%=request.getAttribute("index")%>"/>
 			

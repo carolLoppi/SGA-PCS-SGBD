@@ -20,7 +20,7 @@ public class ServletAutenticador extends HttpServlet {
 	public ServletAutenticador(){
         super();
     }
-	
+	//TO-DO: redirecionar para páginas seguintes do fluxo a depender do resultado
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		String login = request.getParameter("login");
@@ -29,7 +29,7 @@ public class ServletAutenticador extends HttpServlet {
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		if(nomeOperador != null)
-			out.println("Bem Vindo<h3>"+nomeOperador+":  " +login+"</h3>");
+			out.println("Bem Vindo<h3>"+nomeOperador+":  \nLogin: " +login+"</h3>");
 		else
 			out.println("Hmm, não autenticado. Você será redirecionado para a página de login");
 		out.close();

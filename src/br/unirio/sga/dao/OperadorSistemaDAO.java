@@ -1,13 +1,12 @@
 package br.unirio.sga.dao;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Date;
 
-import br.unirio.sga.model.Alocacao;
-import br.unirio.sga.model.Material;
-import br.unirio.sga.model.OperadorSistema;
+import br.unirio.sga.persistence.JDBCConnection;
 
 public class OperadorSistemaDAO {
 
@@ -16,28 +15,26 @@ public class OperadorSistemaDAO {
 	 * getByEmail() 
 	 */
 	
-public static String autenticaOperador(String login, String senha){
+	public static String autenticaOperador(String login, String senha) throws SQLException{
 		
-		try{
-			
-			Connection connection = ConnectionFactory.get();
-			Statement sql = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
-			
-			ResultSet usuario = sql.executeQuery("SELECT * FROM operador_do_sistema WHERE login = " + login + "AND senha = " + senha + ";"); 
-			String nome = (usuario.getString("nome"));
-			
-			if(usuario == null)
-				return null;
-
-			sql.close();
-			return nome;
+		String query = "SELECT * FROM operador_do_sistema WHERE login = '" + login + "' AND senha = '" + senha + "' ;";
+		ResultSet usuarios = JDBCConnection.executaQuery(query);
+		String temp = null;
+		while(usuarios.next()){
+		
+			temp = usuarios.getString("nome");
 		
 		}
-		catch (Exception e){
-			
-			return null;
-		}
+		
+		return temp;
 		
 	}
-	
 }
+	
+	
+	
+	
+		
+	
+	
+
