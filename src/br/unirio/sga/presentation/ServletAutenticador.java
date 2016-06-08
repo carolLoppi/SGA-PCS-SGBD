@@ -28,14 +28,22 @@ public class ServletAutenticador extends HttpServlet {
 		String nomeOperador = LoginService.autenticaOperador(login, senha);
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
+		ServletContext context = getServletContext();
+
 		if(nomeOperador != null)
-			out.println("Bem Vindo<h3>"+nomeOperador+":  \nLogin: " +login+"</h3>");
-		else
-			out.println("Hmm, não autenticado. Você será redirecionado para a página de login");
+		{
+			RequestDispatcher rd = context.getRequestDispatcher("/sucesso.jsp");
+			request.setAttribute("nome", nomeOperador);
+			rd.forward(request, response);
+
+		}
+		else{
+			RequestDispatcher rd = context.getRequestDispatcher("/sucesso.jsp");
+			rd.forward(request, response);
+
+		}
 		out.close();
-//		ServletContext context = getServletContext();
-//		RequestDispatcher rd = context.getRequestDispatcher("/sucesso.jsp");
-//		rd.forward(request, response);
+	
 
 	}
 }

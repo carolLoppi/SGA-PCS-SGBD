@@ -18,14 +18,16 @@ public class OperadorSistemaDAO {
 	public static String autenticaOperador(String login, String senha) throws SQLException{
 		
 		String query = "SELECT * FROM operador_do_sistema WHERE login = '" + login + "' AND senha = '" + senha + "' ;";
-		ResultSet usuarios = JDBCConnection.executaQuery(query);
+		Connection conexao = JDBCConnection.executaQuery();
+		Statement sql = conexao.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+		ResultSet usuarios = sql.executeQuery(query); 
 		String temp = null;
 		while(usuarios.next()){
 		
 			temp = usuarios.getString("nome");
 		
 		}
-		
+		conexao.close();
 		return temp;
 		
 	}
