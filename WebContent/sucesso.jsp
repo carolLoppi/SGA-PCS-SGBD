@@ -21,19 +21,15 @@
 				<div class="row col-md-12">
 						<div class="panel panel-default">
 							<div class="panel-body">
-								<img src="./resources/bootstrap/img/logoSGA.jpg" width="100" height="100">
-								<h3>Sistema de Gestão de Almoxarifado</h3>
+								<div class="row">
+									<div class="col-sm-6 col-md-10"><h1>Sistema de Gestão de Almoxarifado</h1><h4>Seja bem vindo(a): ${nome}</h4></div>
+									<div class="col-sm-6 col-md-2 pull-right"><img src="./resources/bootstrap/img/logoSGA.jpg" width="100" height="100"></div>
+								</div>
+								<br>
+								<a href="/list.do"><button type="submit" class="btn btn-primary" align="center" name="entrada">Entrada de Materiais</button></a>
+								<a href="/list.do"><button type="submit" class="btn btn-primary" name="saida" value>Saída de Materiais</button></a>
 								<hr>
-									<div>
-										<p>Seja bem vindo(a): ${nome}!</p>									
-									</div>
-								<hr>
-									<div class="form-group">
-										<a href="/list.do"><button type="submit" class="btn btn-primary" align="center" name="entrada">Entrada de Materiais</button></a>
-									</div>
-									<div class="form-group">
-										<a href="/list.do"><button type="submit" class="btn btn-primary" name="saida" value>Saída de Materiais</button></a>
-									</div>
+								CARREGAR AQUI A LISTA DO DE ENTRADAS E SAIDAS?	
 							</div>
 						</div>
 					</div>
