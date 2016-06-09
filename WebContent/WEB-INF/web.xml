@@ -20,9 +20,19 @@
 	    <servlet-class>br.unirio.sga.presentation.ServletAutenticador</servlet-class>
 	</servlet>
 	
+	<servlet>
+	    <servlet-name>ServletRedirecionaSecao</servlet-name>
+	    <servlet-class>br.unirio.sga.presentation.ServletRedirecionaSecao</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+	    <servlet-name>ServletRedirecionaSecao</servlet-name>
+	    <url-pattern>/redirecionaOpcao</url-pattern>
+	</servlet-mapping>
+	
 	<servlet-mapping>
 	    <servlet-name>ServletEntrada</servlet-name>
-	    <url-pattern>/inclusao</url-pattern>
+	    <url-pattern>/incluir</url-pattern>
 	</servlet-mapping>
 	
 	
@@ -35,6 +45,7 @@
 	    <servlet-name>ServletAutenticador</servlet-name>
 	    <url-pattern>/authentication</url-pattern>
 	</servlet-mapping>
+	
 	
 <!-- 	Wildcard - Padrões de URL não mapeados serão redirecionados para a página de login -->
 <!-- 	<servlet-mapping> -->

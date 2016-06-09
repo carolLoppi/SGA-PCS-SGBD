@@ -20,13 +20,13 @@ public class ServletAutenticador extends HttpServlet {
 	public ServletAutenticador(){
         super();
     }
-	//TO-DO: redirecionar para páginas seguintes do fluxo a depender do resultado
+
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		String login = request.getParameter("login");
 		String senha = request.getParameter("senha");
 		String nomeOperador = LoginService.autenticaOperador(login, senha);
-		response.setContentType("text/html");
+		//response.setContentType("text/html");
 //		PrintWriter out = response.getWriter();
 		ServletContext context = getServletContext();
 
@@ -34,6 +34,8 @@ public class ServletAutenticador extends HttpServlet {
 		{
 			RequestDispatcher rd = context.getRequestDispatcher("/sucesso.jsp");
 			request.setAttribute("nome", nomeOperador);
+			request.setAttribute("login", login);
+
 			rd.forward(request, response);
 
 		}

@@ -12,8 +12,10 @@
 	</head>
 	<body>
 		<div class="top-border"></div>
-		<form method="post" action="authentication">
+		<form method="post" action="redirecionaOpcao">
 			<input type="hidden" name="index" value="<%=request.getAttribute("index")%>"/>
+			<input type="hidden" name="login" value="<%=request.getAttribute("login")%>"/>
+			<input type="hidden" name="nomeOperador" value="<%=request.getAttribute("nomeOperador")%>"/>
 			
 			
 			<br><br><br>
@@ -26,8 +28,8 @@
 									<div class="col-sm-6 col-md-2 pull-right"><img src="./resources/bootstrap/img/logoSGA.jpg" width="100" height="100"></div>
 								</div>
 								<br>
-								<a href="/list.do"><button class="btn btn-primary" align="center" name="entrada">Registrar Entrada de Material</button></a>
-								<a href="/list.do"><button  class="btn btn-primary" name="saida" value>Registrar Saída de Material</button></a>
+								<button type="submit" value="entrada" class="btn btn-primary" name="entrada" value>Registrar Entrada de Material</button>
+								<button  type="submit" value="saida" class="btn btn-primary" name="saida">Registrar Saída de Material</button>
 								<hr>
 								
 							</div>

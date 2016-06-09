@@ -13,7 +13,6 @@
 		<div class="top-border"></div>
 		<form method="post" action="authentication">
 			<input type="hidden" name="index" value="<%=request.getAttribute("index")%>"/>
-			
 			<br><br><br>
 			<div class="container">
 				<div class="row col-md-12">
@@ -25,6 +24,8 @@
 									<h4>Registrar Entrada</h4>
 								</div>
 								<div class="col-sm-6 col-md-2"><img src="./resources/bootstrap/img/logoSGA.jpg" width="100" height="100"></div>
+								<div class="col-sm-6 col-md-10"><h1>Sistema de Gestão de Almoxarifado</h1><h4>Seja bem vindo(a): ${nome}</h4></div>
+								
 							</div>
 								
 							<hr>
@@ -32,20 +33,22 @@
 								<div class="form-group">
 									<div class="row">
 										<div class="col-sm-6 col-md-4"><label>Material</label>
-											<select type="text" class="form-control margin-top-xs" name="material"/>
-												<option value class selected="selected">Selecione um Material...</option>
+											<select class="form-control margin-top-xs" name="material">
+												<option selected="selected">Selecione um Material...</option>
+												<option value ="Cartucho de Impressora">Cartucho Preto HP 74</option>
+												<option value ="Caneta Esferográfica Azul">Caneta Esferográfica Azul</option>
+												<option value ="Resma de Papel A4">Resma de Papel A4</option>
+												<option value ="Borracha">Borracha</option>
 											</select>
 										</div>
 										<div class="col-sm-6 col-md-4"><label>Setor</label>
-											<select type="text" class="form-control margin-top-xs" name="setor"/>
-												<option value class selected="selected">Selecione um Setor...</option>
+											<select class="form-control margin-top-xs" name="setor">
+												<option selected="selected">Selecione um Setor...</option>
+												<option value="Setor A">Setor A</option>												
 											</select>
 										</div>
 										<div class="col-sm-6 col-md-2"><label>Quantidade</label>
 											<input type="text" placeholder="Digite a Quantidade" class="form-control margin-top-xs" name="quantidade"/>
-										</div>
-										<div class="col-sm-6 col-md-2"><label>Unidade de Medida</label>
-											<input type="text" placeholder="unidade" class="form-control margin-top-xs" name="unidadeMedida" disabled/>
 										</div>
 									</div>
 									<br>
