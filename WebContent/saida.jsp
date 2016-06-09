@@ -22,7 +22,7 @@
 							<div class="row">
 								<div class="col-sm-6 col-md-10">
 									<h3>Sistema de Gestão de Almoxarifado</h3>
-									<h4>Registrar Entrada</h4>
+									<h4>Registrar Saída</h4>
 								</div>
 								<div class="col-sm-6 col-md-2"><img src="./resources/bootstrap/img/logoSGA.jpg" width="100" height="100"></div>
 							</div>
@@ -36,10 +36,8 @@
 												<option value class selected="selected">Selecione um Material...</option>
 											</select>
 										</div>
-										<div class="col-sm-6 col-md-4"><label>Setor</label>
-											<select type="text" class="form-control margin-top-xs" name="setor"/>
-												<option value class selected="selected">Selecione um Setor...</option>
-											</select>
+										<div class="col-sm-6 col-md-4"><label>Departamento</label>
+											<input type="text" placeholder="Digite o Nome do Departamento Destino" class="form-control margin-top-xs" name="unidadeMedida"/>
 										</div>
 										<div class="col-sm-6 col-md-2"><label>Quantidade</label>
 											<input type="text" placeholder="Digite a Quantidade" class="form-control margin-top-xs" name="quantidade"/>

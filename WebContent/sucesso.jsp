@@ -26,8 +26,8 @@
 									<div class="col-sm-6 col-md-2 pull-right"><img src="./resources/bootstrap/img/logoSGA.jpg" width="100" height="100"></div>
 								</div>
 								<br>
-								<a href="/list.do"><button type="submit" class="btn btn-primary" align="center" name="entrada">Entrada de Materiais</button></a>
-								<a href="/list.do"><button type="submit" class="btn btn-primary" name="saida" value>Saída de Materiais</button></a>
+								<a href="/list.do"><button class="btn btn-primary" align="center" name="entrada">Registrar Entrada de Material</button></a>
+								<a href="/list.do"><button  class="btn btn-primary" name="saida" value>Registrar Saída de Material</button></a>
 								<hr>
 								CARREGAR AQUI A LISTA DO DE ENTRADAS E SAIDAS?	
 							</div>
