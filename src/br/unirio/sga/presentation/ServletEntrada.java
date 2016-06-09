@@ -27,11 +27,18 @@ public class ServletEntrada extends HttpServlet{
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		String nomeOperador = request.getParameter("login");
+		String loginOperador = request.getParameter("login");
 		String material = request.getParameter("material");
-		Integer id = EntradaService.recuperaIdOperador(nomeOperador);
+		String setor = request.getParameter("setor");
+		Integer quantidade = Integer.parseInt(request.getParameter("quantidade"));
+		Integer id = EntradaService.recuperaIdOperador(loginOperador);
+		
+		Boolean sucesso = EntradaService.incluirMaterial(material, setor, quantidade, id);
+		//TO-DO: Mensagem sucesso!
+		//TO-DO: Mensagem insucesso!
 		ServletContext context = getServletContext();
-		RequestDispatcher rd = context.getRequestDispatcher("/entrada.jsp");
+		RequestDispatcher rd = context.getRequestDispatcher("/entrada.jsp"); 		//substituir por reload
+		request.setAttribute("operador", loginOperador);
 		rd.forward(request, response);
 	}
 	

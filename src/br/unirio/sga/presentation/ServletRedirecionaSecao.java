@@ -24,11 +24,14 @@ public class ServletRedirecionaSecao extends HttpServlet {
 	{
     	String opcaoEntrada = request.getParameter("entrada");
     	String opcaoSaida = request.getParameter("saida");
+    	String loginOperador = request.getParameter("login");
+
     	ServletContext context = getServletContext();
 
 		if(opcaoEntrada != null){
 
 			RequestDispatcher rd = context.getRequestDispatcher("/entrada.jsp");
+			request.setAttribute("operador", loginOperador);
 	   		rd.forward(request, response);
 
 		}
@@ -36,14 +39,11 @@ public class ServletRedirecionaSecao extends HttpServlet {
 		if(opcaoSaida != null){
 
 			RequestDispatcher rd = context.getRequestDispatcher("/saida.jsp");
+			request.setAttribute("operador", loginOperador);
 	   		rd.forward(request, response);
 
 		}
-//    	String nomeOperador = request.getParameter("login");
-//    	ServletContext context = getServletContext();
-//   		RequestDispatcher rd = context.getRequestDispatcher("/entrada.jsp");
-//		request.setAttribute("operador", nomeOperador);
-//   		rd.forward(request, response);
+
 	}
     
     @Override

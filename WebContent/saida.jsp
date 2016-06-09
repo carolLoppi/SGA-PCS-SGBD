@@ -42,9 +42,6 @@
 										<div class="col-sm-6 col-md-2"><label>Quantidade</label>
 											<input type="text" placeholder="Digite a Quantidade" class="form-control margin-top-xs" name="quantidade"/>
 										</div>
-										<div class="col-sm-6 col-md-2"><label>Unidade de Medida</label>
-											<input type="text" placeholder="unidade" class="form-control margin-top-xs" name="unidadeMedida" disabled/>
-										</div>
 									</div>
 									<br>
 									<button type="submit" class="btn btn-primary pull-right">Salvar</button>

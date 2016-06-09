@@ -11,7 +11,7 @@
 	</head>
 	<body>
 		<div class="top-border"></div>
-		<form method="post" action="authentication">
+		<form method="post" action="incluir">
 			<input type="hidden" name="index" value="<%=request.getAttribute("index")%>"/>
 			<br><br><br>
 			<div class="container">

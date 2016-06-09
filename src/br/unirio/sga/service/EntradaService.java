@@ -1,16 +1,18 @@
 package br.unirio.sga.service;
 
+import br.unirio.sga.dao.AlocacaoDAO;
+
 public class EntradaService {
 
-	public static Integer recuperaIdOperador(String nomeOperador) {
-		// TODO Auto-generated method stub
-		//call DAO to getByName that return an ID
-		return null;
+	public static Integer recuperaIdOperador(String loginOperador) {
+		Integer idOperador = AlocacaoDAO.getIdByLogin(loginOperador);
+		return idOperador;
 	}
 
-//Padrão: Servlet invoca o serviço que usa o DAO
-//usa DAO de Alocacao
-	//A título de exemplo: LoginService
-	
+	public static boolean incluirMaterial(String material, String setor, Integer quantidade, Integer id) {
+			
+		Boolean sucesso = AlocacaoDAO.acrescentaQuantidadeMaterial(material, setor, quantidade, id);
+		return sucesso;
+	}	
 	
 }

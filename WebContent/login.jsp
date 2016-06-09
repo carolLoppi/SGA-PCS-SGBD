@@ -23,7 +23,6 @@
 								<img src="./resources/bootstrap/img/logoSGA.jpg" width="100" height="100">
 								<h3>Sistema de Gestão de Almoxarifado</h3>
 								<hr>
-								<form>
 									<div class="form-group">
 										<label>Nome de Usuario</label>
 										<input type="text" placeholder="Digite o nome de usuario" class="form-control" name="login"/>
@@ -33,7 +32,6 @@
 										<input type="password" class="form-control" placeholder="Digite a Senha" name="senha"/>
 									</div>
 									<button type="submit" class="btn btn-primary pull-right">Entrar</button>
-								</form>
 							</div>
 						</div>
 					</div>
