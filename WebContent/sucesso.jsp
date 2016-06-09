@@ -29,7 +29,7 @@
 								<a href="/list.do"><button class="btn btn-primary" align="center" name="entrada">Registrar Entrada de Material</button></a>
 								<a href="/list.do"><button  class="btn btn-primary" name="saida" value>Registrar Saída de Material</button></a>
 								<hr>
-								CARREGAR AQUI A LISTA DO DE ENTRADAS E SAIDAS?	
+								
 							</div>
 						</div>
 					</div>

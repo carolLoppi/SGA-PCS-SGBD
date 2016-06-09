@@ -10,7 +10,7 @@ import java.sql.Statement;
  */
 public class JDBCConnection {
 
-	public static Connection executaQuery() {
+	public static Connection getConnection() {
 
 		try{
 		

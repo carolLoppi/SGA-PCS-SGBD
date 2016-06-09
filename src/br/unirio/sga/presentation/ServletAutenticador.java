@@ -27,7 +27,7 @@ public class ServletAutenticador extends HttpServlet {
 		String senha = request.getParameter("senha");
 		String nomeOperador = LoginService.autenticaOperador(login, senha);
 		response.setContentType("text/html");
-		PrintWriter out = response.getWriter();
+//		PrintWriter out = response.getWriter();
 		ServletContext context = getServletContext();
 
 		if(nomeOperador != null)
@@ -38,11 +38,11 @@ public class ServletAutenticador extends HttpServlet {
 
 		}
 		else{
-			RequestDispatcher rd = context.getRequestDispatcher("/sucesso.jsp");
+			RequestDispatcher rd = context.getRequestDispatcher("/login.jsp");
 			rd.forward(request, response);
 
 		}
-		out.close();
+//		out.close();
 	
 
 	}

@@ -30,7 +30,7 @@
 									</div>
 									<div class="form-group">
 										<label>Senha</label>
-										<input type="text" class="form-control" placeholder="Digite a Senha" name="senha"/>
+										<input type="password" class="form-control" placeholder="Digite a Senha" name="senha"/>
 									</div>
 									<button type="submit" class="btn btn-primary pull-right">Entrar</button>
 								</form>
