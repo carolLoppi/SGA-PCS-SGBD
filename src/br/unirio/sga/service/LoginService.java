@@ -11,10 +11,8 @@ public class LoginService {
 		try {
 		
 			String nome =  OperadorSistemaDAO.autenticaOperador(login, senha);
-			if(nome == null){
-				
+			if(nome == null){				
 				return null;
-
 			}
 			return nome;
 

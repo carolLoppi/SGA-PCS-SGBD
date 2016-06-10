@@ -13,6 +13,5 @@ public class EntradaService {
 			
 		Boolean sucesso = AlocacaoDAO.acrescentaQuantidadeMaterial(material, setor, quantidade, id);
 		return sucesso;
-	}	
-	
+	}
 }

@@ -32,6 +32,7 @@ public class ServletEntrada extends HttpServlet{
 		String setor = request.getParameter("setor");
 		Integer quantidade = Integer.parseInt(request.getParameter("quantidade"));
 		Integer id = EntradaService.recuperaIdOperador(loginOperador);
+
 		
 		Boolean sucesso = EntradaService.incluirMaterial(material, setor, quantidade, id);
 		//TO-DO: Mensagem sucesso!

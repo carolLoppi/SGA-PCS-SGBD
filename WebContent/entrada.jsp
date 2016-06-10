@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
@@ -10,6 +11,7 @@
  		<script src="./resources/bootstrap/js/bootstrap.min.js"></script>
 	</head>
 	<body>
+		
 		<div class="top-border"></div>
 		<form method="post" action="incluir">
 			<input type="hidden" name="index" value="<%=request.getAttribute("index")%>"/>
@@ -20,11 +22,10 @@
 						<div class="panel-body">
 							<div class="row">
 								<div class="col-sm-6 col-md-10">
-									<h3>Sistema de Gestão de Almoxarifado</h3>
-									<h4>Registrar Entrada</h4>
+									<h1>Sistema de Gestão de Almoxarifado</h1>
 								</div>
 								<div class="col-sm-6 col-md-2"><img src="./resources/bootstrap/img/logoSGA.jpg" width="100" height="100"></div>
-								<div class="col-sm-6 col-md-10"><h1>Sistema de Gestão de Almoxarifado</h1><h4>Seja bem vindo(a): ${nome}</h4></div>
+								<div class="col-sm-6 col-md-10"><h3>Registrar Entrada</h3></div>
 								
 							</div>
 								
@@ -33,12 +34,14 @@
 								<div class="form-group">
 									<div class="row">
 										<div class="col-sm-6 col-md-4"><label>Material</label>
-											<select class="form-control margin-top-xs" name="material">
+											<select class="form-control margin-top-xs" name="materiais">
 												<option selected="selected">Selecione um Material...</option>
-												<option value ="Cartucho de Impressora">Cartucho Preto HP 74</option>
-												<option value ="Caneta Esferográfica Azul">Caneta Esferográfica Azul</option>
-												<option value ="Resma de Papel A4">Resma de Papel A4</option>
-												<option value ="Borracha">Borracha</option>
+												<option value ="estatico">Valor Estático</option>
+												<c:forEach items="${materiais}" var="material">
+													<option value="${material}">${material.descricao}</option>
+												</c:forEach>
+												
+
 											</select>
 										</div>
 										<div class="col-sm-6 col-md-4"><label>Setor</label>

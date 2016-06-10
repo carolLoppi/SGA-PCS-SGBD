@@ -2,7 +2,9 @@ package br.unirio.sga.dao;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -11,6 +13,7 @@ import br.unirio.sga.model.Fornecedor;
 import br.unirio.sga.model.Material;
 import br.unirio.sga.model.OperadorSistema;
 import br.unirio.sga.model.Setor;
+import br.unirio.sga.persistence.JDBCConnection;
 
 /**
  * 
@@ -50,6 +53,11 @@ public class AlocacaoDAO {
 	public static Boolean decresceQuantidadeMaterial(String material, String setor, Integer quantidade, Integer id, String departamento) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	public static Boolean verificaQuantidadeMaterial(String material, String setor, Integer quantidade, Integer id, String departamento) {
+		// TODO Auto-generated method stub
+		return null;		
 	}
 
 }

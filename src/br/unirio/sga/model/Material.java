@@ -16,6 +16,10 @@ public class Material {
 		this.precoDeMercado = precoDeMercado;
 	}
 	
+	public Material() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public Integer getId() {
 		return id;
 	}
