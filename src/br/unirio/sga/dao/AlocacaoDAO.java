@@ -45,12 +45,12 @@ public class AlocacaoDAO {
 		return null;
 	}
 
-	public static Boolean acrescentaQuantidadeMaterial(String materialId, String setorId, Integer quantidade, Integer id) throws SQLException{
+	public static Boolean acrescentaQuantidadeMaterial(String materialId, String setorId, String fornecedorId, Integer quantidade, Integer id) throws SQLException{
 		//se material já inserido em alocacao (com mesmo setor ), atualiza a quantidade
 		
 		//senão, inserir.
 		//TODO verificar auto incremento de chave aqui
-		String query = "INSERT INTO alocacao (alocacao_id, fornecedor_id, material_id, setor_id, quantidade) VALUES(1,) ;";
+		String query = "INSERT INTO alocacao (alocacao_id, fornecedor_id, material_id, setor_id, quantidade) VALUES(1," + fornecedorId + "," + materialId + "," + setorId + ","+ quantidade + ");";
 		Connection conexao = JDBCConnection.getConnection();
 		Statement sql = conexao.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 		int result = sql.executeUpdate(query);

@@ -29,11 +29,12 @@ public class ServletEntrada extends HttpServlet{
 		
 		String loginOperador = request.getParameter("login");
 		String idMaterial = request.getParameter("material");
-		String idSetor = request.getParameter("idSetor");
+		String idSetor = request.getParameter("setor");
+		String idFornecedor = request.getParameter("fornecedor"); 
 		Integer quantidade = Integer.parseInt(request.getParameter("quantidade"));
 		Integer idOperador = EntradaService.recuperaIdOperador(loginOperador);
 		
-		Boolean sucesso = EntradaService.incluirMaterial(idMaterial, idSetor, quantidade, idOperador);
+		Boolean sucesso = EntradaService.incluirMaterial(idMaterial, idSetor, idFornecedor, quantidade, idOperador);
 		//TO-DO: Mensagem sucesso!
 		//TO-DO: Mensagem insucesso!
 		ServletContext context = getServletContext();

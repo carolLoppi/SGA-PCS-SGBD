@@ -11,11 +11,11 @@ public class EntradaService {
 		return idOperador;
 	}
 
-	public static boolean incluirMaterial(String material, String setor, Integer quantidade, Integer id) {
+	public static boolean incluirMaterial(String material, String setor, String fornecedor, Integer quantidade, Integer id) {
 
 		Boolean sucesso = null;
 		try {
-			sucesso = AlocacaoDAO.acrescentaQuantidadeMaterial(material, setor, quantidade, id);
+			sucesso = AlocacaoDAO.acrescentaQuantidadeMaterial(material, setor, fornecedor, quantidade, id);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
