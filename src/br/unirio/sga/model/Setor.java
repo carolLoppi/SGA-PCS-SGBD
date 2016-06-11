@@ -17,6 +17,9 @@ public class Setor {
 		this.capacidade = capacidade;
 	}
 	
+	public Setor() {
+	}
+
 	public Integer getId() {
 		return id;
 	}

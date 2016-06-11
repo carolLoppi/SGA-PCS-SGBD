@@ -16,6 +16,10 @@ public class Almoxarifado {
 		this.endereco = endereco;
 		this.setores = setores;
 	}
+	public Almoxarifado(Integer id) {
+		super();
+		this.id = id;
+	}
 
 	public Integer getId() {
 		return id;

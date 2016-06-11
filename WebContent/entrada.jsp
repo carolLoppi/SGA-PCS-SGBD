@@ -34,20 +34,27 @@
 								<div class="form-group">
 									<div class="row">
 										<div class="col-sm-6 col-md-4"><label>Material</label>
-											<select class="form-control margin-top-xs" name="materiais">
+											<select class="form-control margin-top-xs" name="material">
 												<option selected="selected">Selecione um Material...</option>
-												<option value ="estatico">Valor Estático</option>
 												<c:forEach items="${materiais}" var="material">
-													<option value="${material}">${material.descricao}</option>
+													<option value="${material.id}">${material.descricao}</option>
 												</c:forEach>
-												
-
 											</select>
 										</div>
-										<div class="col-sm-6 col-md-4"><label>Setor</label>
+										<div class="col-sm-6 col-md-3"><label>Fornecedor</label>
+											<select class="form-control margin-top-xs" name="fornecedor">
+												<option selected="selected">Selecione um Fornecedor...</option>
+												<c:forEach items="${fornecedores}" var="fornecedor">
+													<option value="${fornecedor.id}">${fornecedor.nome}</option>
+												</c:forEach>											
+											</select>
+										</div>
+										<div class="col-sm-6 col-md-3"><label>Setor</label>
 											<select class="form-control margin-top-xs" name="setor">
 												<option selected="selected">Selecione um Setor...</option>
-												<option value="Setor A">Setor A</option>												
+												<c:forEach items="${setores}" var="setor">
+													<option value="${setor.id}">${setor.nome}</option>
+												</c:forEach>											
 											</select>
 										</div>
 										<div class="col-sm-6 col-md-2"><label>Quantidade</label>

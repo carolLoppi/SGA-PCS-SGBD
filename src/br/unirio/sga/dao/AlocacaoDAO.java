@@ -45,17 +45,27 @@ public class AlocacaoDAO {
 		return null;
 	}
 
-	public static Boolean acrescentaQuantidadeMaterial(String material, String setor, Integer quantidade, Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+	public static Boolean acrescentaQuantidadeMaterial(String materialId, String setorId, Integer quantidade, Integer id) throws SQLException{
+		//se material já inserido em alocacao (com mesmo setor ), atualiza a quantidade
+		
+		//senão, inserir.
+		//TODO verificar auto incremento de chave aqui
+		String query = "INSERT INTO alocacao (alocacao_id, fornecedor_id, material_id, setor_id, quantidade) VALUES(1,) ;";
+		Connection conexao = JDBCConnection.getConnection();
+		Statement sql = conexao.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+		int result = sql.executeUpdate(query);
+		
+		conexao.close();
+		
+		return (result == 0 ? false : true);
 	}
 
-	public static Boolean decresceQuantidadeMaterial(String material, String setor, Integer quantidade, Integer id, String departamento) {
+	public static Boolean decresceQuantidadeMaterial(String materialId, String setorId, Integer quantidade, Integer id, String departamentoId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 	
-	public static Boolean verificaQuantidadeMaterial(String material, String setor, Integer quantidade, Integer id, String departamento) {
+	public static Boolean verificaQuantidadeMaterial(String materialId, String setorId, Integer quantidade, Integer id, String departamentoId) {
 		// TODO Auto-generated method stub
 		return null;		
 	}
