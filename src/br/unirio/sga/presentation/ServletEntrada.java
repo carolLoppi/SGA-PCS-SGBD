@@ -38,8 +38,15 @@ public class ServletEntrada extends HttpServlet{
 		//TO-DO: Mensagem sucesso!
 		//TO-DO: Mensagem insucesso!
 		ServletContext context = getServletContext();
-		RequestDispatcher rd = context.getRequestDispatcher("/entrada.jsp"); 		//substituir por reload
+		if(sucesso) {
+			request.setAttribute("entradaSucesso", true);
+		}
+		else {
+			request.setAttribute("entradaSucesso", false);
+		}
 		request.setAttribute("operador", loginOperador);
+		request.setAttribute("inclusao", true);
+		RequestDispatcher rd = context.getRequestDispatcher("/sucesso.jsp");
 		rd.forward(request, response);
 	}
 	

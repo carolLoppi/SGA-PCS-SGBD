@@ -16,8 +16,9 @@ INSERT INTO setor(almoxarifado_id, capacidade, nome) VALUES(1, 1000, 'Limpeza');
 INSERT INTO setor(almoxarifado_id, capacidade, nome) VALUES(1, 1000, 'Eletronicos');
 
 
-INSERT INTO almoxarifado(codigo, endereco_id) VALUES(1, 'ALM12345', '1');
+INSERT INTO almoxarifado(codigo, endereco_id) VALUES(1, 'ALM12345', 1);
 
-INSERT INTO fornecedor(cnpj, nome, telefone, codigo, endereco_id) VALUES ('11.222.333/0001-99', 'PIMACO', '(11) 2222-3344', 'PIM', '2');
-INSERT INTO fornecedor(cnpj, nome, telefone, codigo, endereco_id) VALUES ('22.333.444/0001-99', '3M', '(11) 2222-3344', '3M', '2');
-INSERT INTO fornecedor(cnpj, nome, telefone, codigo, endereco_id) VALUES ('33.444.555/0001-99', 'HP do Brasil', '(11) 2333-4444', 'HPB', '2');
+INSERT INTO fornecedor(cnpj, nome, telefone, codigo, endereco_id) VALUES ('11.222.333/0001-99', 'PIMACO', '(11) 2222-3344', 'PIM', 8);
+INSERT INTO fornecedor(cnpj, nome, telefone, codigo, endereco_id) VALUES ('22.333.444/0001-99', '3M', '(11) 2222-3344', '3M', 9);
+INSERT INTO fornecedor(cnpj, nome, telefone, codigo, endereco_id) VALUES ('33.444.555/0001-99', 'HP do Brasil', '(11) 2333-4444', 'HPB', 10);
+INSERT INTO fornecedor(cnpj, nome, telefone, codigo, endereco_id) VALUES ('44.555.666/0001-99', 'CHAMEX', '(11) 3333-4455', 'CHM', 10);
