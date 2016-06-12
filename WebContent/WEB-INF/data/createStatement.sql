@@ -1,6 +1,6 @@
 
 CREATE TABLE public.Endereco (
-                Endereco_id VARCHAR NOT NULL,
+                Endereco_id SERIAL NOT NULL,
                 logradouro VARCHAR NOT NULL,
                 numero INTEGER NOT NULL,
                 complemento VARCHAR NOT NULL,
@@ -12,7 +12,7 @@ CREATE TABLE public.Endereco (
 
 
 CREATE TABLE public.Operador_do_Sistema (
-                Operador_id INTEGER NOT NULL,
+                Operador_id SERIAL NOT NULL,
                 CPF VARCHAR NOT NULL,
                 login VARCHAR NOT NULL,
                 senha VARCHAR NOT NULL,
@@ -22,18 +22,18 @@ CREATE TABLE public.Operador_do_Sistema (
 
 
 CREATE TABLE public.Fornecedor (
-                Fornecedor_id INTEGER NOT NULL,
+                Fornecedor_id SERIAL NOT NULL,
                 CNPJ VARCHAR NOT NULL,
                 nome VARCHAR NOT NULL,
                 telefone VARCHAR NOT NULL,
                 codigo VARCHAR NOT NULL,
-                Endereco_id VARCHAR NOT NULL,
+                Endereco_id SERIAL NOT NULL,
                 CONSTRAINT fornecedor_pk PRIMARY KEY (Fornecedor_id)
 );
 
 
 CREATE TABLE public.Material (
-                Material_id INTEGER NOT NULL,
+                Material_id SERIAL NOT NULL,
                 codigo VARCHAR NOT NULL,
                 descricao VARCHAR NOT NULL,
                 unidade_de_medida VARCHAR NOT NULL,
@@ -43,16 +43,16 @@ CREATE TABLE public.Material (
 
 
 CREATE TABLE public.Almoxarifado (
-                Almoxarifado_id INTEGER NOT NULL,
+                Almoxarifado_id SERIAL NOT NULL,
                 codigo VARCHAR NOT NULL,
-                Endereco_id VARCHAR NOT NULL,
+                Endereco_id SERIAL NOT NULL,
                 CONSTRAINT almoxarifado_pk PRIMARY KEY (Almoxarifado_id)
 );
 
 
 CREATE TABLE public.Setor (
-                Setor_id INTEGER NOT NULL,
-                Almoxarifado_id INTEGER NOT NULL,
+                Setor_id SERIAL NOT NULL,
+                Almoxarifado_id SERIAL NOT NULL,
                 capacidade BIGINT NOT NULL,
                 nome VARCHAR NOT NULL,
                 CONSTRAINT setor_pk PRIMARY KEY (Setor_id)
@@ -60,28 +60,28 @@ CREATE TABLE public.Setor (
 
 
 CREATE TABLE public.Alocacao (
-                Alocacao_id INTEGER NOT NULL,
-                Fornecedor_id INTEGER NOT NULL,
-                Material_id INTEGER NOT NULL,
-                Setor_id INTEGER NOT NULL,
+                Alocacao_id SERIAL NOT NULL,
+                Fornecedor_id SERIAL NOT NULL,
+                Material_id SERIAL NOT NULL,
+                Setor_id SERIAL NOT NULL,
                 quantidade BIGINT NOT NULL,
                 CONSTRAINT alocacao_pk PRIMARY KEY (Alocacao_id)
 );
 
 
 CREATE TABLE public.Entrada (
-                Entrada_id INTEGER NOT NULL,
-                Alocacao_id INTEGER NOT NULL,
+                Entrada_id SERIAL NOT NULL,
+                Alocacao_id SERIAL NOT NULL,
                 data_da_operacao TIMESTAMP NOT NULL,
-                Operador_id INTEGER NOT NULL,
+                Operador_id SERIAL NOT NULL,
                 CONSTRAINT entrada_pk PRIMARY KEY (Entrada_id)
 );
 
 
 CREATE TABLE public.Saida (
-                Saida_id INTEGER NOT NULL,
-                Operador_id INTEGER NOT NULL,
-                Alocacao_id INTEGER NOT NULL,
+                Saida_id SERIAL NOT NULL,
+                Operador_id SERIAL NOT NULL,
+                Alocacao_id SERIAL NOT NULL,
                 nome_departamento VARCHAR NOT NULL,
                 data_da_operacao TIMESTAMP NOT NULL,
                 CONSTRAINT saida_pk PRIMARY KEY (Saida_id)
@@ -157,3 +157,35 @@ REFERENCES public.Alocacao (Alocacao_id)
 ON DELETE NO ACTION
 ON UPDATE NO ACTION
 NOT DEFERRABLE;
+
+
+
+
+
+
+
+
+
+
+
+/*PRA DAR DROP TABLES*/
+DROP TABLE ENTRADA;
+DROP TABLE SAIDA;
+DROP TABLE ALOCACAO;
+DROP TABLE SETOR;
+DROP TABLE ENDERECO;
+DROP TABLE OPERADOR_DO_SISTEMA;
+DROP TABLE MATERIAL;
+DROP TABLE ALMOXARIFADO;
+DROP TABLE FORNECEDOR;
+commit;
+
+/*Todos os selects*/
+select * from entrada;
+select * from saida;
+select * from almoxarifado;
+select * from setor;
+select * from fornecedor;
+select * from material;
+select * from  endereco;
+select * from operador_do_sistema;
