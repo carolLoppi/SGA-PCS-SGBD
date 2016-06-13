@@ -8,14 +8,31 @@ public class Entrada {
 	private Alocacao alocacao;
 	private OperadorSistema operador;
 	private Date dataOperacao;
+	private Integer quantidade;
 	
-	public Entrada(Integer id, Alocacao alocacao, OperadorSistema operador, Date dataOperacao) {
+	
+	
+	
+	public Entrada(Integer id, Alocacao alocacao, OperadorSistema operador, Date dataOperacao, Integer quantidade) {
+		super();
 		this.id = id;
 		this.alocacao = alocacao;
 		this.operador = operador;
 		this.dataOperacao = dataOperacao;
+		this.quantidade = quantidade;
 	}
-	
+
+
+	public Integer getQuantidade() {
+		return quantidade;
+	}
+
+
+	public void setQuantidade(Integer quantidade) {
+		this.quantidade = quantidade;
+	}
+
+
 	public Integer getId() {
 		return id;
 	}

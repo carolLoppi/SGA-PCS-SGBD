@@ -18,7 +18,7 @@ import br.unirio.sga.persistence.JDBCConnection;
 public class MaterialDAO {
 	
 	public static List<Material> getTodosMateriais() throws SQLException{
-		String query = "SELECT * FROM material;";
+		String query = "SELECT * FROM material";
 		Connection conexao = JDBCConnection.getConnection();
 		Statement sql = conexao.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 		ResultSet result = sql.executeQuery(query);

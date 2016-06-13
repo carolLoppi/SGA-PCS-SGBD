@@ -17,8 +17,6 @@ public class JDBCConnection {
 			Class.forName("org.postgresql.Driver");		
 			Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/SGAData", "postgres","admin");
 			
-//			Statement sql = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
-//			ResultSet resultSet = sql.executeQuery(query); 
 			return con;
 			
 		} catch (Exception e) {

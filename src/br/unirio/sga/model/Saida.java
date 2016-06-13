@@ -8,14 +8,24 @@ public class Saida {
 	private Alocacao alocacao;
 	private String nomeDepartamento;
 	private Date dataOperacao;
+	private Integer quantidade;
 	
-	public Saida(Integer id, OperadorSistema operador, Alocacao alocacao, String nomeDepartamento,
-			Date dataOperacao) {
+	
+	public Saida(Integer id, OperadorSistema operador, Alocacao alocacao, String nomeDepartamento, Date dataOperacao,
+			Integer quantidade) {
+		super();
 		this.id = id;
 		this.operador = operador;
 		this.alocacao = alocacao;
 		this.nomeDepartamento = nomeDepartamento;
 		this.dataOperacao = dataOperacao;
+		this.quantidade = quantidade;
+	}
+	public Integer getQuantidade() {
+		return quantidade;
+	}
+	public void setQuantidade(Integer quantidade) {
+		this.quantidade = quantidade;
 	}
 	public Integer getId() {
 		return id;
