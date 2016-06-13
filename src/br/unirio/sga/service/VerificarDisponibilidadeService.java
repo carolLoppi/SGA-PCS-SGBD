@@ -1,11 +1,13 @@
 package br.unirio.sga.service;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import br.unirio.sga.dao.AlocacaoDAO;
 import br.unirio.sga.dao.OperadorSistemaDAO;
+import br.unirio.sga.model.Alocacao;
 
-public class SaidaService {
+public class VerificarDisponibilidadeService {
 	public static Integer recuperaIdOperador(String loginOperador) {
 		Integer idOperador = null;
 		try {
@@ -16,10 +18,13 @@ public class SaidaService {
 		return idOperador;
 	}
 
-	public static boolean removerMaterial(String material, String setor, Integer quantidade, Integer id,
-			String departamento) {
-
-		Boolean sucesso = AlocacaoDAO.decresceQuantidadeMaterial(material, setor, quantidade, id, departamento);
-		return sucesso;
+	public static List<Alocacao> verificarDisponibilidade(String idMaterial) {
+		List<Alocacao> alocacoes = null;
+		try {
+			alocacoes = AlocacaoDAO.verificarDisponibilidadeMaterial(idMaterial);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return alocacoes;
 	}
 }

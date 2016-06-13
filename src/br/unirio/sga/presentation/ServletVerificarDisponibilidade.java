@@ -1,6 +1,7 @@
 package br.unirio.sga.presentation;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -10,18 +11,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.unirio.sga.service.EntradaService;
+import br.unirio.sga.model.Alocacao;
 import br.unirio.sga.service.OperadorSistemaService;
+import br.unirio.sga.service.VerificarDisponibilidadeService;
 
 /* 
  * Servlet responsável por atuar no processamento de entrada de material.
  */
-@WebServlet("/ServletEntrada")
-public class ServletEntrada extends HttpServlet{
+@WebServlet("/ServletVerificarDisponibilidade")
+public class ServletVerificarDisponibilidade extends HttpServlet{
 
 	private static final long serialVersionUID = 1L;
 	
-	public ServletEntrada(){
+	public ServletVerificarDisponibilidade(){
         super();
     }
 
@@ -30,24 +32,22 @@ public class ServletEntrada extends HttpServlet{
 		
 		String loginOperador = request.getParameter("login");
 		String idMaterial = request.getParameter("material");
-		String idSetor = request.getParameter("setor");
-		String idFornecedor = request.getParameter("fornecedor"); 
-		Integer quantidade = Integer.parseInt(request.getParameter("quantidade"));
 		Integer idOperador = OperadorSistemaService.recuperaIdOperador(loginOperador);
 		
-		Boolean sucesso = EntradaService.incluirMaterial(idMaterial, idSetor, idFornecedor, quantidade, idOperador);
+		List<Alocacao> alocacoes= VerificarDisponibilidadeService.verificarDisponibilidade(idMaterial);
 		//TO-DO: Mensagem sucesso!
 		//TO-DO: Mensagem insucesso!
 		ServletContext context = getServletContext();
-		if(sucesso) {
-			request.setAttribute("entradaSucesso", true);
+		if(alocacoes != null && alocacoes.size() != 0) {
+			request.setAttribute("saidaSucesso", true);
+			request.setAttribute("alocacoes", alocacoes);
 		}
 		else {
-			request.setAttribute("entradaSucesso", false);
+			request.setAttribute("saidaSucesso", false);
 		}
 		request.setAttribute("operador", loginOperador);
-		request.setAttribute("inclusao", true);
-		RequestDispatcher rd = context.getRequestDispatcher("/sucesso.jsp");
+		request.setAttribute("exclusao", true);
+		RequestDispatcher rd = context.getRequestDispatcher("/escolhaSaida.jsp");
 		rd.forward(request, response);
 	}
 	

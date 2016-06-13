@@ -58,12 +58,12 @@ public class ServletRedirecionaSecao extends HttpServlet {
 			}
 
 			RequestDispatcher rd = context.getRequestDispatcher("/entrada.jsp");
-			request.setAttribute("operador", loginOperador);
+			request.setAttribute("login", loginOperador);
 			rd.forward(request, response);
 		}
 		if (opcaoSaida != null) {
 			RequestDispatcher rd = context.getRequestDispatcher("/saida.jsp");
-			request.setAttribute("operador", loginOperador);
+			request.setAttribute("login", loginOperador);
 			rd.forward(request, response);
 		}
 	}

@@ -16,6 +16,16 @@
 	</servlet>
 	
 	<servlet>
+	    <servlet-name>ServletSaida</servlet-name>
+	    <servlet-class>br.unirio.sga.presentation.ServletSaida</servlet-class>
+	</servlet>
+	
+	<servlet>
+	    <servlet-name>ServletVerificarDisponibilidade</servlet-name>
+	    <servlet-class>br.unirio.sga.presentation.ServletVerificarDisponibilidade</servlet-class>
+	</servlet>
+	
+	<servlet>
 	    <servlet-name>ServletAutenticador</servlet-name>
 	    <servlet-class>br.unirio.sga.presentation.ServletAutenticador</servlet-class>
 	</servlet>
@@ -35,6 +45,15 @@
 	    <url-pattern>/incluir</url-pattern>
 	</servlet-mapping>
 	
+	<servlet-mapping>
+	    <servlet-name>ServletSaida</servlet-name>
+	    <url-pattern>/excluir</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+	    <servlet-name>ServletVerificarDisponibilidade</servlet-name>
+	    <url-pattern>/verificarDisponibilidade</url-pattern>
+	</servlet-mapping>
 	
 	<servlet-mapping>
 	    <servlet-name>ServletSGA</servlet-name>

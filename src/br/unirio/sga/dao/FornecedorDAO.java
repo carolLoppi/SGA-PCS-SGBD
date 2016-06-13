@@ -7,9 +7,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.unirio.sga.model.Almoxarifado;
 import br.unirio.sga.model.Fornecedor;
-import br.unirio.sga.model.Setor;
 import br.unirio.sga.persistence.JDBCConnection;
 
 public class FornecedorDAO {
@@ -31,5 +29,24 @@ public class FornecedorDAO {
 		}
 		conexao.close();
 		return fornecedores;
+	}
+
+	public static Fornecedor getFornecedorById(Integer fornecedorId) throws SQLException {
+		String query = "SELECT * FROM Fornecedor where fornecedor_id = " + fornecedorId + ";";
+		Connection conexao = JDBCConnection.getConnection();
+		Statement sql = conexao.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+		ResultSet result = sql.executeQuery(query);
+		
+		Fornecedor fornecedor = new Fornecedor();
+
+		while(result.next()){
+			fornecedor.setId(result.getInt("fornecedor_id"));
+			fornecedor.setCnpj(result.getString("cnpj"));
+			fornecedor.setNome(result.getString("nome"));
+			fornecedor.setTelefone(result.getString("telefone"));
+			fornecedor.setCodigo(result.getString("codigo"));
+		}
+		conexao.close();
+		return fornecedor;
 	}
 }

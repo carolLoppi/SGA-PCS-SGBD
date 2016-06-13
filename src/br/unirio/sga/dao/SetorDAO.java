@@ -36,4 +36,20 @@ public class SetorDAO {
 		conexao.close();
 		return setores;
 	}
+
+	public static Setor getSetorById(Integer id) throws SQLException {
+		String query = "SELECT * FROM Setor where setor_id=" + id +";";
+		Connection conexao = JDBCConnection.getConnection();
+		Statement sql = conexao.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+		ResultSet result = sql.executeQuery(query);
+		Setor setor = new Setor();
+		while(result.next()){
+			setor.setId(result.getInt("setor_id"));
+			setor.setAlmoxarifado(new Almoxarifado(result.getInt("almoxarifado_id")));
+			setor.setCapacidade(result.getLong("capacidade"));
+			setor.setNome(result.getString("nome"));
+		}
+		conexao.close();
+		return setor;
+	}
 }

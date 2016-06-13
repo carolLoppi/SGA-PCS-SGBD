@@ -1,7 +1,6 @@
 package br.unirio.sga.dao;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -30,6 +29,18 @@ public class OperadorSistemaDAO {
 		conexao.close();
 		return temp;
 		
+	}
+	public static Integer getIdByLogin(String loginOperador) throws SQLException {
+		String query = "SELECT operador_id FROM operador_do_sistema WHERE login = '" + loginOperador + "' ;";
+		Connection conexao = JDBCConnection.getConnection();
+		Statement sql = conexao.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+		ResultSet usuarios = sql.executeQuery(query); 
+		Integer idOperador = null;
+		while(usuarios.next()){
+			idOperador = usuarios.getInt("operador_id");
+		}
+		conexao.close();
+		return idOperador;
 	}
 }
 	

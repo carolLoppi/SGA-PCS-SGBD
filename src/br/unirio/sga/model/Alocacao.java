@@ -8,18 +8,22 @@ public class Alocacao {
 	private Integer id;
 	private Material material;
 	private Setor setor;
-	private Double quantidade;
+	private Integer quantidade;
 	private Fornecedor fornecedor;
 	
 	
 
-	public Alocacao(Integer id, Material material, Setor setor, Double quantidade, Fornecedor fornecedor) {
+	public Alocacao(Integer id, Material material, Setor setor, Integer quantidade, Fornecedor fornecedor) {
 		super();
 		this.id = id;
 		this.material = material;
 		this.setor = setor;
 		this.quantidade = quantidade;
 		this.fornecedor = fornecedor;
+	}
+
+	public Alocacao() {
+		// TODO Auto-generated constructor stub
 	}
 
 	public Integer getId() {
@@ -46,11 +50,11 @@ public class Alocacao {
 		this.setor = setor;
 	}
 
-	public Double getQuantidade() {
+	public Integer getQuantidade() {
 		return quantidade;
 	}
 
-	public void setQuantidade(Double quantidade) {
+	public void setQuantidade(Integer quantidade) {
 		this.quantidade = quantidade;
 	}
 

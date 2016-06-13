@@ -11,7 +11,7 @@ INSERT INTO material(codigo, descricao, unidade_de_medida, preco_de_mercado) VAL
 INSERT INTO material(codigo, descricao, unidade_de_medida, preco_de_mercado) VALUES ('PAP123','Papel A4', 'resma', 20.00);
 INSERT INTO material(codigo, descricao, unidade_de_medida, preco_de_mercado) VALUES ('TIN123','Tinta Refil para catucho HP 74', 'litro', 25.00);
 
-INSERT INTO almoxarifado(codigo, endereco_id) VALUES('ALM12345', 1);
+INSERT INTO almoxarifado(codigo, endereco_id) VALUES('ALM12345', 5);
 
 INSERT INTO setor(setor_id, almoxarifado_id, capacidade, nome) VALUES(1, 2, 1000, 'Escritorio');
 INSERT INTO setor(setor_id, almoxarifado_id, capacidade, nome) VALUES(2, 2, 1000, 'Limpeza');
