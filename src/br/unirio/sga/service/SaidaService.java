@@ -16,10 +16,16 @@ public class SaidaService {
 		return idOperador;
 	}
 
-	public static boolean removerMaterial(String material, String setor, Integer quantidade, Integer id,
-			String departamento) {
+	public static boolean registrarSaida(Integer alocacaoId, Integer idOperador, String departamentoDestino,
+			Integer quantidadeSaida, Integer quantidadeDisponivel) {
 
-		Boolean sucesso = AlocacaoDAO.decresceQuantidadeMaterial(material, setor, quantidade, id, departamento);
+		Boolean sucesso = null;
+		try {
+			sucesso = AlocacaoDAO.decresceQuantidadeMaterial(alocacaoId, idOperador, departamentoDestino,
+					quantidadeSaida, quantidadeDisponivel);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return sucesso;
 	}
 }

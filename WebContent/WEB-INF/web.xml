@@ -47,7 +47,7 @@
 	
 	<servlet-mapping>
 	    <servlet-name>ServletSaida</servlet-name>
-	    <url-pattern>/excluir</url-pattern>
+	    <url-pattern>/registrarSaida</url-pattern>
 	</servlet-mapping>
 	
 	<servlet-mapping>

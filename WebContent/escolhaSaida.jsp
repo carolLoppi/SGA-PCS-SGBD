@@ -14,70 +14,77 @@
 	</head>
 	<body>
 		<div class="top-border"></div>
-		<form method="post" action="excluir">
-			<input type="hidden" name="index" value="<%=request.getAttribute("index")%>"/>
-			
-			<br><br><br>
-			<div class="container">
-				
-				<div class="row col-md-12">
-					<div class="panel panel-default">
-						<div class="panel-body">
-							<div class="row">
-								<div class="col-sm-6 col-md-10">
-									<h3>Sistema de Gestão de Almoxarifado</h3>
-									<h4>Registrar Saída</h4>
-									<br>
+		<br><br><br>
+		<div class="container">
+			<div class="row col-md-12">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-sm-6 col-md-10">
+								<h3>Sistema de Gestão de Almoxarifado</h3>
+								<h4>Registrar Saída</h4>
+								<br>
+								<c:if test="${exclusao == true && saidaSucesso == true}"> 
 									<h5>
 										<b>Material:</b>
 										<br>
 										<br>
 										<input width="250" class="form-control clipboardjs-input-sm" readonly value="${alocacoes[0].material.descricao}">
 									</h5>
-								</div>
-								<div class="col-sm-6 col-md-2"><img src="./resources/bootstrap/img/logoSGA.jpg" width="100" height="100"></div>
+								</c:if>
 							</div>
-							<hr>
-							<c:if test="${exclusao == true && saidaSucesso == false}"> 
-								<div class="alert alert-danger" role="alert">Material Não Disponível para Saída!</div>
-							</c:if>
-							<c:if test="${exclusao == true && saidaSucesso == true}"> 
-								<div class="form-group">
-									<div class="table-responsive">
-										<table class="table table-condensed">
-											<thead class="table-head-brown">
+							<div class="col-sm-6 col-md-2"><img src="./resources/bootstrap/img/logoSGA.jpg" width="100" height="100"></div>
+						</div>
+						<hr>
+						<c:if test="${exclusao == true && saidaSucesso == false}"> 
+							<div class="alert alert-danger" role="alert">Material Não Disponível em Estoque!</div>
+						</c:if>
+						<c:if test="${quantidadeInvalida == true}"> 
+							<div class="alert alert-danger" role="alert">Quantidade não disponível! Por favor, digite um número menor ou igual à quantidade disponível </div>
+						</c:if>
+						<c:if test="${exclusao == true && saidaSucesso == true}"> 
+							<div class="form-group">
+								<div class="table-responsive">
+									<table class="table table-condensed">
+										<thead class="table-head-brown">
+											<tr>
+												<th>Setor</th>
+												<th>Fornecedor</th>
+												<th width="150">Quantidade Disponível</th>
+												<th width="250">Quantidade a Retirar</th>
+												<th class="text-align:center">Departamento Destino</th>
+												<th> </th>
+											</tr>
+										</thead>
+										<tbody>
+											<c:forEach items="${alocacoes}" var="alocacao">
+												
 												<tr>
-													<th>Setor</th>
-													<th>Fornecedor</th>
-													<th width="150">Quantidade Disponível</th>
-													<th width="250">Quantidade a Retirar</th>
-													<th class="text-align:center">Departamento Destino</th>
-													<th> </th>
-												</tr>
-											</thead>
-											<tbody>
-												<c:forEach items="${alocacoes}" var="alocacao">
-													<tr>
+													<form method="post" action="registrarSaida">
+														<input type="hidden" name="index" value="<%=request.getAttribute("index")%>"/>
+														<input type="hidden" name="idOperador" value="<%=request.getAttribute("idOperador")%>"/>
+														<input type="hidden" name="alocacaoId" value="${alocacao.id}">
+														<input type="hidden" name="quantidadeDisponivel" value="${alocacao.quantidade}">
 														<td>${alocacao.setor.nome}</td>
 														<td>${alocacao.fornecedor.nome}</td>
 														<td>${alocacao.quantidade}</td>
 														<td><input type="text" class="form-control margin-top-xs" name="quantidadeSaida"></td>
 														<td><input type="text" placeholder="Digite o Nome do Departamento" class="form-control margin-top-xs" name="departamentoDestino"/></td>
 														<td><button type="submit" class="btn btn-primary pull-right"> Registrar Saída</button></td>
-													</tr>
-												</c:forEach>
-											</tbody>
-										</table>
-										</div>
+													</form>
+												</tr>
+											</c:forEach>
+										</tbody>
+									</table>
 									</div>
-									<br>
 								</div>
-							</c:if>
+								<br>
+							</div>
+						</c:if>
 
-						</div>
 					</div>
 				</div>
 			</div>
-		</form>
+		</div>
 	</body>
 </html>

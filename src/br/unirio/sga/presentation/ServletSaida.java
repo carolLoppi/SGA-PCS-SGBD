@@ -10,8 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.unirio.sga.service.EntradaService;
-import br.unirio.sga.service.OperadorSistemaService;
+import br.unirio.sga.service.SaidaService;
 
 /* 
  * Servlet responsável por atuar no processamento de saída de material.
@@ -28,24 +27,30 @@ public class ServletSaida extends HttpServlet {
 			throws ServletException, IOException {
 
 		String loginOperador = request.getParameter("login");
-		String idMaterial = request.getParameter("material");
-		String idSetor = request.getParameter("setor");
-		String idFornecedor = request.getParameter("fornecedor");
-		Integer quantidade = Integer.parseInt(request.getParameter("quantidade"));
-		Integer idOperador = OperadorSistemaService.recuperaIdOperador(loginOperador);
+		String departamentoDestino = request.getParameter("departamentoDestino");
+		Integer alocacaoId = Integer.parseInt(request.getParameter("alocacaoId"));
+		Integer quantidadeSaida = Integer.parseInt(request.getParameter("quantidadeSaida"));
+		Integer quantidadeDisponivel = Integer.parseInt(request.getParameter("quantidadeDisponivel"));
+		Integer idOperador = Integer.parseInt(request.getParameter("idOperador"));
 
-		Boolean sucesso = EntradaService.incluirMaterial(idMaterial, idSetor, idFornecedor, quantidade, idOperador);
-		// TO-DO: Mensagem sucesso!
-		// TO-DO: Mensagem insucesso!
-		ServletContext context = getServletContext();
-		if (sucesso) {
-			request.setAttribute("entradaSucesso", true);
+		RequestDispatcher rd;
+		if (quantidadeSaida > quantidadeDisponivel) {
+			request.setAttribute("quantidadeInvalida", true);
+			ServletContext context = getServletContext();
+			rd = context.getRequestDispatcher("/escolhaSaida.jsp");
 		} else {
-			request.setAttribute("entradaSucesso", false);
+			Boolean sucesso = SaidaService.registrarSaida(alocacaoId, idOperador, departamentoDestino, quantidadeSaida, quantidadeDisponivel);
+			ServletContext context = getServletContext();
+			if (sucesso) {
+				request.setAttribute("saidaSucesso", true);
+			} else {
+				request.setAttribute("saidaSucesso", false);
+			}
+			request.setAttribute("operador", loginOperador);
+			request.setAttribute("saida", true);
+			rd = context.getRequestDispatcher("/sucesso.jsp");
+
 		}
-		request.setAttribute("operador", loginOperador);
-		request.setAttribute("inclusao", true);
-		RequestDispatcher rd = context.getRequestDispatcher("/sucesso.jsp");
 		rd.forward(request, response);
 	}
 }

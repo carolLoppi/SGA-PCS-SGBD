@@ -41,7 +41,14 @@
 									<div class="alert alert-success" role="alert">Entrada Realizada Com Sucesso! : )</div>
 								</c:if>
 								<c:if test="${inclusao == true && entradaSucesso == false}"> 
-									<div class="alert alert-danger" role="alert">Ocorreu um erro ao realizar a sua entrada. Por favor, tente mais tarde.</div>
+									<div class="alert alert-danger" role="alert">Ocorreu um erro ao tentar realizar a entrada. Por favor, tente novamente mais tarde.</div>
+								</c:if>
+								
+								<c:if test="${saida == true && saidaSucesso == true}"> 
+									<div class="alert alert-success" role="alert">Saída Realizada Com Sucesso! : )</div>
+								</c:if>
+								<c:if test="${saida == true && saidaSucesso == false}"> 
+									<div class="alert alert-danger" role="alert">Ocorreu um erro ao tentar realizar a saída. Por favor, tente novamente mais tarde.</div>
 								</c:if>
 								
 								

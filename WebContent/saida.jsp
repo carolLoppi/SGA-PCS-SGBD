@@ -16,6 +16,7 @@
 		<div class="top-border"></div>
 		<form method="post" action="verificarDisponibilidade">
 			<input type="hidden" name="index" value="<%=request.getAttribute("index")%>"/>
+			<input type="hidden" name="login" value="<%=request.getAttribute("login")%>"/>
 			
 			<br><br><br>
 			<div class="container">

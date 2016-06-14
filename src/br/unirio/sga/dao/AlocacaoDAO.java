@@ -87,12 +87,6 @@ public class AlocacaoDAO {
 		return alocacaoId;
 	}
 
-	public static Boolean decresceQuantidadeMaterial(String materialId, String setorId, Integer quantidade, Integer id,
-			String departamentoId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	public static Integer verificaQuantidadeMaterial(String materialId, String setorId, String fornecedorId)
 			throws SQLException {
 		Integer quantidadeAnterior = null;
@@ -149,6 +143,19 @@ public class AlocacaoDAO {
 		}
 		conexao.close();
 		return alocacoes;
+	}
+
+	// TODO: Terminar!
+	public static Boolean decresceQuantidadeMaterial(Integer alocacaoId, Integer idOperador, String departamentoDestino,
+			Integer quantidadeSaida, Integer quantidadeDisponivel) throws SQLException {
+		Integer quantidade = quantidadeDisponivel - quantidadeSaida;
+		String query = "UPDATE alocacao SET quantidade=" + (quantidade) + " WHERE alocacao_id=" + alocacaoId + ";";
+		Connection conexao = JDBCConnection.getConnection();
+		Statement sql = conexao.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+		int resultUpdate = sql.executeUpdate(query);
+		conexao.close();
+		SaidaDAO.inserirSaida(idOperador, alocacaoId, departamentoDestino, quantidadeSaida);
+		return (resultUpdate == 0 ? false : true);
 	}
 
 }

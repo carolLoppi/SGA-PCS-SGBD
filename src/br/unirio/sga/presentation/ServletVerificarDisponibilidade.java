@@ -46,6 +46,7 @@ public class ServletVerificarDisponibilidade extends HttpServlet{
 			request.setAttribute("saidaSucesso", false);
 		}
 		request.setAttribute("operador", loginOperador);
+		request.setAttribute("idOperador", idOperador);
 		request.setAttribute("exclusao", true);
 		RequestDispatcher rd = context.getRequestDispatcher("/escolhaSaida.jsp");
 		rd.forward(request, response);
