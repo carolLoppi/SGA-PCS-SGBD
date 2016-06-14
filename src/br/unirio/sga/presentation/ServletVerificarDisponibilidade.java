@@ -33,6 +33,7 @@ public class ServletVerificarDisponibilidade extends HttpServlet{
 		String loginOperador = request.getParameter("login");
 		String idMaterial = request.getParameter("material");
 		Integer idOperador = OperadorSistemaService.recuperaIdOperador(loginOperador);
+		String nomeOperador = request.getParameter("nomeOperador");
 		
 		List<Alocacao> alocacoes= VerificarDisponibilidadeService.verificarDisponibilidade(idMaterial);
 		//TO-DO: Mensagem sucesso!
@@ -45,7 +46,8 @@ public class ServletVerificarDisponibilidade extends HttpServlet{
 		else {
 			request.setAttribute("saidaSucesso", false);
 		}
-		request.setAttribute("operador", loginOperador);
+		request.setAttribute("login", loginOperador);
+		request.setAttribute("nomeOperador", nomeOperador);
 		request.setAttribute("idOperador", idOperador);
 		request.setAttribute("exclusao", true);
 		RequestDispatcher rd = context.getRequestDispatcher("/escolhaSaida.jsp");

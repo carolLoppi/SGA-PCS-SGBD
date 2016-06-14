@@ -16,6 +16,7 @@
 		<form method="post" action="incluir">
 			<input type="hidden" name="index" value="<%=request.getAttribute("index")%>"/>
 			<input type="hidden" name="login" value="<%=request.getAttribute("login")%>"/>
+			<input type="hidden" name="nomeOperador" value="<%=request.getAttribute("nomeOperador")%>"/>
 			<br><br><br>
 			<div class="container">
 				<div class="row col-md-12">
@@ -58,7 +59,7 @@
 											</select>
 										</div>
 										<div class="col-sm-6 col-md-2"><label>Quantidade</label>
-											<input type="text" placeholder="Digite a Quantidade" class="form-control margin-top-xs" name="quantidade"/>
+											<input required type="text" placeholder="Digite a Quantidade" class="form-control margin-top-xs" name="quantidade"/>
 										</div>
 									</div>
 									<br>

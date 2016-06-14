@@ -27,11 +27,13 @@ public class ServletSaida extends HttpServlet {
 			throws ServletException, IOException {
 
 		String loginOperador = request.getParameter("login");
+		String nomeOperador = request.getParameter("nomeOperador");
+		Integer idOperador = Integer.parseInt(request.getParameter("idOperador"));
 		String departamentoDestino = request.getParameter("departamentoDestino");
 		Integer alocacaoId = Integer.parseInt(request.getParameter("alocacaoId"));
 		Integer quantidadeSaida = Integer.parseInt(request.getParameter("quantidadeSaida"));
 		Integer quantidadeDisponivel = Integer.parseInt(request.getParameter("quantidadeDisponivel"));
-		Integer idOperador = Integer.parseInt(request.getParameter("idOperador"));
+		
 
 		RequestDispatcher rd;
 		if (quantidadeSaida > quantidadeDisponivel) {
@@ -46,7 +48,8 @@ public class ServletSaida extends HttpServlet {
 			} else {
 				request.setAttribute("saidaSucesso", false);
 			}
-			request.setAttribute("operador", loginOperador);
+			request.setAttribute("login", loginOperador);
+			request.setAttribute("nomeOperador", nomeOperador);
 			request.setAttribute("saida", true);
 			rd = context.getRequestDispatcher("/sucesso.jsp");
 

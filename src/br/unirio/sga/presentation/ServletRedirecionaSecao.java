@@ -32,6 +32,7 @@ public class ServletRedirecionaSecao extends HttpServlet {
 		String opcaoEntrada = request.getParameter("entrada");
 		String opcaoSaida = request.getParameter("saida");
 		String loginOperador = request.getParameter("login");
+		String nomeOperador = request.getParameter("nomeOperador");
 		List<Material> materiais = MaterialService.recuperarListaMateriais();
 
 		if (materiais != null) {
@@ -59,11 +60,13 @@ public class ServletRedirecionaSecao extends HttpServlet {
 
 			RequestDispatcher rd = context.getRequestDispatcher("/entrada.jsp");
 			request.setAttribute("login", loginOperador);
+			request.setAttribute("nomeOperador", nomeOperador);
 			rd.forward(request, response);
 		}
 		if (opcaoSaida != null) {
 			RequestDispatcher rd = context.getRequestDispatcher("/saida.jsp");
 			request.setAttribute("login", loginOperador);
+			request.setAttribute("nomeOperador", nomeOperador);
 			rd.forward(request, response);
 		}
 	}

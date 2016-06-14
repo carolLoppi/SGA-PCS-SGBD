@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<!-- Esta inclusão abaixo é importante ser mantida por conta da utilização da cláusula c:if -->
+	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
@@ -22,14 +24,17 @@
 							<div class="panel-body">
 								<img src="./resources/bootstrap/img/logoSGA.jpg" width="100" height="100">
 								<h3>Sistema de Gestão de Almoxarifado</h3>
+								<c:if test="${loginInvalido == true}"> 
+									<div class="alert alert-danger" role="alert">Nome de usuario ou senha inválidos!</div>
+								</c:if>
 								<hr>
 									<div class="form-group">
 										<label>Nome de Usuario</label>
-										<input type="text" placeholder="Digite o nome de usuario" class="form-control" name="login"/>
+										<input required type="text" placeholder="Digite o nome de usuario" class="form-control" name="login"/>
 									</div>
 									<div class="form-group">
 										<label>Senha</label>
-										<input type="password" class="form-control" placeholder="Digite a Senha" name="senha"/>
+										<input required type="password" class="form-control" placeholder="Digite a Senha" name="senha"/>
 									</div>
 									<button type="submit" class="btn btn-primary pull-right">Entrar</button>
 							</div>

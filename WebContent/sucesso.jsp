@@ -19,7 +19,6 @@
 			<input type="hidden" name="login" value="<%=request.getAttribute("login")%>"/>
 			<input type="hidden" name="nomeOperador" value="<%=request.getAttribute("nomeOperador")%>"/>
 			
-			
 			<br><br><br>
 			<div class="container">
 				<div class="row col-md-12">
@@ -27,9 +26,7 @@
 							<div class="panel-body">
 								<div class="row">
 									<div class="col-sm-6 col-md-10"><h1>Sistema de Gestão de Almoxarifado</h1>
-										<c:if test="${inclusao != true}">
-											<h4>Seja bem vindo(a): ${nome}</h4>
-										</c:if>
+										<h4>Seja bem vindo(a): ${nomeOperador}</h4>
 									</div>
 									<div class="col-sm-6 col-md-2 pull-right"><img src="./resources/bootstrap/img/logoSGA.jpg" width="100" height="100"></div>
 								</div>

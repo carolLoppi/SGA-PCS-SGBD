@@ -33,7 +33,7 @@ public class ServletAutenticador extends HttpServlet {
 		if(nomeOperador != null)
 		{
 			RequestDispatcher rd = context.getRequestDispatcher("/sucesso.jsp");
-			request.setAttribute("nome", nomeOperador);
+			request.setAttribute("nomeOperador", nomeOperador);
 			request.setAttribute("login", login);
 
 			rd.forward(request, response);
@@ -41,6 +41,7 @@ public class ServletAutenticador extends HttpServlet {
 		}
 		else{
 			RequestDispatcher rd = context.getRequestDispatcher("/login.jsp");
+			request.setAttribute("loginInvalido", true);
 			rd.forward(request, response);
 
 		}

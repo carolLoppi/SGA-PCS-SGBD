@@ -62,6 +62,8 @@
 												<tr>
 													<form method="post" action="registrarSaida">
 														<input type="hidden" name="index" value="<%=request.getAttribute("index")%>"/>
+														<input type="hidden" name="login" value="<%=request.getAttribute("login")%>"/>
+														<input type="hidden" name="nomeOperador" value="<%=request.getAttribute("nomeOperador")%>"/>
 														<input type="hidden" name="idOperador" value="<%=request.getAttribute("idOperador")%>"/>
 														<input type="hidden" name="alocacaoId" value="${alocacao.id}">
 														<input type="hidden" name="quantidadeDisponivel" value="${alocacao.quantidade}">

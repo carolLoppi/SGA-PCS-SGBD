@@ -29,6 +29,7 @@ public class ServletEntrada extends HttpServlet{
 			throws ServletException, IOException {
 		
 		String loginOperador = request.getParameter("login");
+		String nomeOperador = request.getParameter("nomeOperador");
 		String idMaterial = request.getParameter("material");
 		String idSetor = request.getParameter("setor");
 		String idFornecedor = request.getParameter("fornecedor"); 
@@ -45,7 +46,8 @@ public class ServletEntrada extends HttpServlet{
 		else {
 			request.setAttribute("entradaSucesso", false);
 		}
-		request.setAttribute("operador", loginOperador);
+		request.setAttribute("login", loginOperador);
+		request.setAttribute("nomeOperador", nomeOperador);
 		request.setAttribute("inclusao", true);
 		RequestDispatcher rd = context.getRequestDispatcher("/sucesso.jsp");
 		rd.forward(request, response);
