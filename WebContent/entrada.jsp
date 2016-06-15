@@ -16,6 +16,7 @@
 		<form method="post" action="incluir">
 			<input type="hidden" name="index" value="<%=request.getAttribute("index")%>"/>
 			<input type="hidden" name="login" value="<%=request.getAttribute("login")%>"/>
+			<input type="hidden" name="senha" value="<%=request.getAttribute("senha")%>"/>
 			<input type="hidden" name="nomeOperador" value="<%=request.getAttribute("nomeOperador")%>"/>
 			<br><br><br>
 			<div class="container">

@@ -17,6 +17,7 @@
 		<form method="post" action="realizaEntrada">
 			<input type="hidden" name="index" value="<%=request.getAttribute("index")%>"/>
 			<input type="hidden" name="login" value="<%=request.getAttribute("login")%>"/>
+			<input type="hidden" name="senha" value="<%=request.getAttribute("senha")%>"/>
 			<input type="hidden" name="nomeOperador" value="<%=request.getAttribute("nomeOperador")%>"/>
 			
 			<br><br><br>
@@ -44,6 +45,7 @@
 									</div>
 								</div>
 								<br>
+								<a href="" onclick="history.go(-1)" class="btn btn-primary">Voltar</a>
 								<button type="submit" class="btn btn-primary pull-right">Verificar Disponibilidade</button>
 							</div>
 						</div>

@@ -30,6 +30,7 @@ public class ServletRedirecionaEntrada extends HttpServlet {
 			throws ServletException, IOException {
 		
 		String loginOperador = request.getParameter("login");
+		String senha = request.getParameter("senha");
 		String nomeOperador = request.getParameter("nomeOperador");
 		Integer idAlmoxarifado = Integer.parseInt(request.getParameter("idAlmoxarifado"));
 		List<Material> materiais = MaterialService.recuperarListaMateriais();
@@ -59,6 +60,7 @@ public class ServletRedirecionaEntrada extends HttpServlet {
 			
 			RequestDispatcher rd = context.getRequestDispatcher("/entrada.jsp");
 			request.setAttribute("login", loginOperador);
+			request.setAttribute("senha", senha);
 			request.setAttribute("nomeOperador", nomeOperador);
 			rd.forward(request, response);
 		}

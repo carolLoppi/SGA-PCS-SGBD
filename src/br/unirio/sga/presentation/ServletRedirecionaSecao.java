@@ -15,7 +15,6 @@ import br.unirio.sga.model.Almoxarifado;
 import br.unirio.sga.model.Material;
 import br.unirio.sga.service.AlmoxarifadoService;
 import br.unirio.sga.service.MaterialService;
-import br.unirio.sga.service.OperadorSistemaService;
 
 @WebServlet("/ServletRedirecionaSecao")
 public class ServletRedirecionaSecao extends HttpServlet {
@@ -30,6 +29,7 @@ public class ServletRedirecionaSecao extends HttpServlet {
 		String opcaoEntrada = request.getParameter("entrada");
 		String opcaoSaida = request.getParameter("saida");
 		String loginOperador = request.getParameter("login");
+		String senha = request.getParameter("senha");
 		String nomeOperador = request.getParameter("nomeOperador");
 		List<Material> materiais = MaterialService.recuperarListaMateriais();
 
@@ -49,12 +49,14 @@ public class ServletRedirecionaSecao extends HttpServlet {
 			}
 			RequestDispatcher rd = context.getRequestDispatcher("/escolhaAlmoxarifado.jsp");
 			request.setAttribute("login", loginOperador);
+			request.setAttribute("senha", senha);
 			request.setAttribute("nomeOperador", nomeOperador);
 			rd.forward(request, response);
 		}
 		if (opcaoSaida != null) {
 			RequestDispatcher rd = context.getRequestDispatcher("/saida.jsp");
 			request.setAttribute("login", loginOperador);
+			request.setAttribute("senha", senha);
 			request.setAttribute("nomeOperador", nomeOperador);
 //			Integer idOperador = OperadorSistemaService.recuperaIdOperador(loginOperador);
 //			request.setAttribute("idOperador", idOperador);

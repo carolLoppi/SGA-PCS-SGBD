@@ -7,7 +7,7 @@ import br.unirio.sga.dao.AlocacaoDAO;
 import br.unirio.sga.dao.OperadorSistemaDAO;
 import br.unirio.sga.model.Alocacao;
 
-public class VerificarDisponibilidadeService {
+public class AlocacaoService {
 	public static Integer recuperaIdOperador(String loginOperador) {
 		Integer idOperador = null;
 		try {
@@ -22,6 +22,16 @@ public class VerificarDisponibilidadeService {
 		List<Alocacao> alocacoes = null;
 		try {
 			alocacoes = AlocacaoDAO.verificarDisponibilidadeMaterial(idMaterial);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return alocacoes;
+	}
+
+	public static List<Alocacao> getTodasAlocacoes() {
+		List<Alocacao> alocacoes = null;
+		try {
+			alocacoes = AlocacaoDAO.getTodasAlocacoes();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

@@ -15,29 +15,14 @@ import br.unirio.sga.persistence.JDBCConnection;
 
 /**
  * 
- * @author Caroline Classe responsável por registrar entradas e saídas do
+ * @author Caroline, Livia
+ * 		
+ *  Classe responsável por registrar entradas e saídas do
  *         sistema.
  *
  */
 
-// TO-DO: uso da JDBCConnection.executaQuery
-// TO-DO: apenas altera a coluna quantidade do material em alocacao
-// Idem na saída, o material não deve ser deletado.
-// devemos antes verificar se há a quantidade necessária a ser removida.
-// A PRINCIPIO CAMPO FORNECEDOR PODE SER IGUAL A "INTERNO" APENAS
-// LEIA-SE SO ATUALIZA CASO EXISTA O REGISTRO OU ACRESCENTA QUANT CASO NAO E SE
-// FOR OUTRO OPERADOR, OUTRO REGISTRO
-
 public class AlocacaoDAO {
-
-	// Example Code:
-	//
-	// Connection connection = JDBCConnection.get();
-	// Statement sql =
-	// connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
-	// ResultSet.CONCUR_READ_ONLY);
-	// sql.executeQuery("query em SQL puro aqui";");
-	// sql.close();
 
 	@SuppressWarnings("resource")
 	public static Boolean acrescentaQuantidadeMaterial(String materialId, String setorId, String fornecedorId,
@@ -81,7 +66,7 @@ public class AlocacaoDAO {
 		Statement sql = conexao.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 		ResultSet result = sql.executeQuery(query1);
 		while (result.next()) {
-			alocacaoId = (result.getInt("alocacao_id") == 0 ? null : result.getInt("alocacao_id"));
+			alocacaoId = (result.getString("alocacao_id") == null ? null : result.getInt("alocacao_id"));
 		}
 		conexao.close();
 		return alocacaoId;
@@ -96,7 +81,7 @@ public class AlocacaoDAO {
 		Statement sql = conexao1.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 		ResultSet result = sql.executeQuery(query1);
 		while (result.next()) {
-			quantidadeAnterior = (result.getInt("quantidade") == 0 ? null : result.getInt("quantidade"));
+			quantidadeAnterior = (result.getString("quantidade") == null ? null : result.getInt("quantidade"));
 		}
 		conexao1.close();
 		return quantidadeAnterior;
@@ -145,7 +130,6 @@ public class AlocacaoDAO {
 		return alocacoes;
 	}
 
-	// TODO: Terminar!
 	public static Boolean decresceQuantidadeMaterial(Integer alocacaoId, Integer idOperador, String departamentoDestino,
 			Integer quantidadeSaida, Integer quantidadeDisponivel) throws SQLException {
 		Integer quantidade = quantidadeDisponivel - quantidadeSaida;
@@ -156,6 +140,40 @@ public class AlocacaoDAO {
 		conexao.close();
 		SaidaDAO.inserirSaida(idOperador, alocacaoId, departamentoDestino, quantidadeSaida);
 		return (resultUpdate == 0 ? false : true);
+	}
+
+	public static List<Alocacao> getTodasAlocacoes() throws SQLException {
+		String query = "SELECT * FROM alocacao;";
+		Connection conexao = JDBCConnection.getConnection();
+		Statement sql = conexao.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+		ResultSet result = sql.executeQuery(query);
+
+		List<Alocacao> alocacoes = new ArrayList<Alocacao>();
+		while (result.next()) {
+			Fornecedor fornecedor;
+			Setor setor;
+			Material material;
+			Alocacao alocacao = new Alocacao();
+
+			Integer setorId = (result.getInt("setor_id"));
+			setor = SetorDAO.getSetorById(setorId);
+
+			Integer fornecedorId = result.getInt("fornecedor_id");
+			fornecedor = FornecedorDAO.getFornecedorById(fornecedorId);
+
+			Integer materialId = (result.getInt("material_id"));
+			material = MaterialDAO.getMaterialById(materialId.toString());
+
+			alocacao.setId(result.getInt("alocacao_id"));
+			alocacao.setFornecedor(fornecedor);
+			alocacao.setQuantidade(result.getInt("quantidade"));
+			alocacao.setSetor(setor);
+			alocacao.setMaterial(material);
+
+			alocacoes.add(alocacao);
+		}
+		conexao.close();
+		return alocacoes;
 	}
 
 }

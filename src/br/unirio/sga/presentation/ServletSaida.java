@@ -27,6 +27,7 @@ public class ServletSaida extends HttpServlet {
 			throws ServletException, IOException {
 
 		String loginOperador = request.getParameter("login");
+		String senha = request.getParameter("senha");
 		String nomeOperador = request.getParameter("nomeOperador");
 		Integer idOperador = Integer.parseInt(request.getParameter("idOperador"));
 		String departamentoDestino = request.getParameter("departamentoDestino");
@@ -52,6 +53,7 @@ public class ServletSaida extends HttpServlet {
 				request.setAttribute("saidaSucesso", false);
 			}
 			request.setAttribute("login", loginOperador);
+			request.setAttribute("senha", senha);
 			request.setAttribute("nomeOperador", nomeOperador);
 			request.setAttribute("saida", true);
 			rd = context.getRequestDispatcher("/sucesso.jsp");

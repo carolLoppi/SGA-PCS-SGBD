@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.unirio.sga.model.Alocacao;
 import br.unirio.sga.service.OperadorSistemaService;
-import br.unirio.sga.service.VerificarDisponibilidadeService;
+import br.unirio.sga.service.AlocacaoService;
 
 /* 
  * Servlet responsável por atuar no processamento de entrada de material.
@@ -31,11 +31,12 @@ public class ServletVerificarDisponibilidade extends HttpServlet{
 			throws ServletException, IOException {
 		
 		String loginOperador = request.getParameter("login");
+		String senha = request.getParameter("senha");
 		String idMaterial = request.getParameter("material");
 		Integer idOperador = OperadorSistemaService.recuperaIdOperador(loginOperador);
 		String nomeOperador = request.getParameter("nomeOperador");
 		
-		List<Alocacao> alocacoes= VerificarDisponibilidadeService.verificarDisponibilidade(idMaterial);
+		List<Alocacao> alocacoes= AlocacaoService.verificarDisponibilidade(idMaterial);
 		//TO-DO: Mensagem sucesso!
 		//TO-DO: Mensagem insucesso!
 		ServletContext context = getServletContext();
@@ -47,6 +48,7 @@ public class ServletVerificarDisponibilidade extends HttpServlet{
 			request.setAttribute("saidaSucesso", false);
 		}
 		request.setAttribute("login", loginOperador);
+		request.setAttribute("senha", senha);
 		request.setAttribute("nomeOperador", nomeOperador);
 		request.setAttribute("idOperador", idOperador);
 		request.setAttribute("exclusao", true);

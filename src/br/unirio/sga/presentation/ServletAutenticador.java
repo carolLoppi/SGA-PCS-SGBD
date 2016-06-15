@@ -1,7 +1,7 @@
 package br.unirio.sga.presentation;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import br.unirio.sga.model.Alocacao;
+import br.unirio.sga.service.AlocacaoService;
 import br.unirio.sga.service.LoginService;
 
 @WebServlet("/ServletAutenticador")
@@ -32,10 +34,13 @@ public class ServletAutenticador extends HttpServlet {
 
 		if(nomeOperador != null)
 		{
+			List<Alocacao> alocacoes= AlocacaoService.getTodasAlocacoes();
 			RequestDispatcher rd = context.getRequestDispatcher("/sucesso.jsp");
 			request.setAttribute("nomeOperador", nomeOperador);
 			request.setAttribute("login", login);
-
+			request.setAttribute("senha", senha);
+			request.setAttribute("alocacoes", alocacoes);
+			
 			rd.forward(request, response);
 
 		}
