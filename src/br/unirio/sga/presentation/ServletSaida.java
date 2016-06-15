@@ -39,7 +39,10 @@ public class ServletSaida extends HttpServlet {
 		if (quantidadeSaida > quantidadeDisponivel) {
 			request.setAttribute("quantidadeInvalida", true);
 			ServletContext context = getServletContext();
+			
 			rd = context.getRequestDispatcher("/escolhaSaida.jsp");
+			//Exibir botão de voltar para tela de listagem de alocações.
+
 		} else {
 			Boolean sucesso = SaidaService.registrarSaida(alocacaoId, idOperador, departamentoDestino, quantidadeSaida, quantidadeDisponivel);
 			ServletContext context = getServletContext();

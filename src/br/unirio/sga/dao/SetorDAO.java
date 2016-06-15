@@ -19,7 +19,26 @@ import br.unirio.sga.persistence.JDBCConnection;
 public class SetorDAO {
 	
 	public static List<Setor> getTodosSetores() throws SQLException{
-		String query = "SELECT * FROM Setor;";
+		String query = "SELECT * FROM Setor";
+		Connection conexao = JDBCConnection.getConnection();
+		Statement sql = conexao.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+		ResultSet result = sql.executeQuery(query);
+		
+		List<Setor> setores = new ArrayList<Setor>();
+		while(result.next()){
+			Setor setor = new Setor();
+			setor.setId(result.getInt("setor_id"));
+			setor.setAlmoxarifado(new Almoxarifado(result.getInt("almoxarifado_id")));
+			setor.setCapacidade(result.getLong("capacidade"));
+			setor.setNome(result.getString("nome"));
+			setores.add(setor);
+		}
+		conexao.close();
+		return setores;
+	}
+	
+	public static List<Setor> getTodosSetores(Integer idAlmoxarifado) throws SQLException{
+		String query = "SELECT * FROM Setor WHERE almoxarifado_id=" + idAlmoxarifado + ";";
 		Connection conexao = JDBCConnection.getConnection();
 		Statement sql = conexao.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 		ResultSet result = sql.executeQuery(query);
@@ -45,7 +64,8 @@ public class SetorDAO {
 		Setor setor = new Setor();
 		while(result.next()){
 			setor.setId(result.getInt("setor_id"));
-			setor.setAlmoxarifado(new Almoxarifado(result.getInt("almoxarifado_id")));
+			String codigoAlmoxarifado = AlmoxarifadoDAO.getCodigoAlmoxarifadoById(result.getInt("almoxarifado_id"));
+			setor.setAlmoxarifado(new Almoxarifado(result.getInt("almoxarifado_id"), codigoAlmoxarifado));
 			setor.setCapacidade(result.getLong("capacidade"));
 			setor.setNome(result.getString("nome"));
 		}

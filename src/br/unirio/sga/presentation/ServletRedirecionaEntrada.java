@@ -11,27 +11,29 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.unirio.sga.model.Almoxarifado;
+import br.unirio.sga.model.Fornecedor;
 import br.unirio.sga.model.Material;
-import br.unirio.sga.service.AlmoxarifadoService;
+import br.unirio.sga.model.Setor;
+import br.unirio.sga.service.FornecedorService;
 import br.unirio.sga.service.MaterialService;
-import br.unirio.sga.service.OperadorSistemaService;
+import br.unirio.sga.service.SetorService;
 
-@WebServlet("/ServletRedirecionaSecao")
-public class ServletRedirecionaSecao extends HttpServlet {
+@WebServlet("/ServletRedirecionaEntrada")
+public class ServletRedirecionaEntrada extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public ServletRedirecionaSecao() {
+	public ServletRedirecionaEntrada() {
 		super();
 	}
 
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String opcaoEntrada = request.getParameter("entrada");
-		String opcaoSaida = request.getParameter("saida");
+		
 		String loginOperador = request.getParameter("login");
 		String nomeOperador = request.getParameter("nomeOperador");
+		Integer idAlmoxarifado = Integer.parseInt(request.getParameter("idAlmoxarifado"));
 		List<Material> materiais = MaterialService.recuperarListaMateriais();
+
 
 		if (materiais != null) {
 			request.setAttribute("materiais", materiais);
@@ -40,27 +42,28 @@ public class ServletRedirecionaSecao extends HttpServlet {
 		}
 		ServletContext context = getServletContext();
 
-		if (opcaoEntrada != null) {
-			List<Almoxarifado> almoxarifados = AlmoxarifadoService.recuperaListaAlmoxarifados();
-			if (almoxarifados != null) {
-				request.setAttribute("almoxarifados", almoxarifados);
+			List<Setor> setores = SetorService.recuperarListaSetores(idAlmoxarifado);
+			List<Fornecedor> fornecedores = FornecedorService.recuperarListaFornecedores();
+			
+			if (setores != null) {
+				request.setAttribute("setores", setores);
 			} else {
-				request.setAttribute("almoxarifados", "Lista vazia!");
+				request.setAttribute("setores", "Lista vazia!");
 			}
-			RequestDispatcher rd = context.getRequestDispatcher("/escolhaAlmoxarifado.jsp");
+
+			if (fornecedores != null) {
+				request.setAttribute("fornecedores", fornecedores);
+			} else {
+				request.setAttribute("fornecedores", "Lista vazia!");
+			}
+			
+			RequestDispatcher rd = context.getRequestDispatcher("/entrada.jsp");
 			request.setAttribute("login", loginOperador);
 			request.setAttribute("nomeOperador", nomeOperador);
 			rd.forward(request, response);
 		}
-		if (opcaoSaida != null) {
-			RequestDispatcher rd = context.getRequestDispatcher("/saida.jsp");
-			request.setAttribute("login", loginOperador);
-			request.setAttribute("nomeOperador", nomeOperador);
-//			Integer idOperador = OperadorSistemaService.recuperaIdOperador(loginOperador);
-//			request.setAttribute("idOperador", idOperador);
-			rd.forward(request, response);
-		}
-	}
+		
+
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

@@ -41,6 +41,7 @@
 						</c:if>
 						<c:if test="${quantidadeInvalida == true}"> 
 							<div class="alert alert-danger" role="alert">Quantidade não disponível! Por favor, digite um número menor ou igual à quantidade disponível </div>
+							<a href="" onclick="history.go(-1)" class="btn btn-primary">Voltar</a>
 						</c:if>
 						<c:if test="${exclusao == true && saidaSucesso == true}"> 
 							<div class="form-group">
@@ -48,6 +49,7 @@
 									<table class="table table-condensed">
 										<thead class="table-head-brown">
 											<tr>
+												<th>Almoxarifado</th>
 												<th>Setor</th>
 												<th>Fornecedor</th>
 												<th width="150">Quantidade Disponível</th>
@@ -67,11 +69,12 @@
 														<input type="hidden" name="idOperador" value="<%=request.getAttribute("idOperador")%>"/>
 														<input type="hidden" name="alocacaoId" value="${alocacao.id}">
 														<input type="hidden" name="quantidadeDisponivel" value="${alocacao.quantidade}">
+														<td>${alocacao.setor.almoxarifado.codigo}</td>
 														<td>${alocacao.setor.nome}</td>
 														<td>${alocacao.fornecedor.nome}</td>
 														<td>${alocacao.quantidade}</td>
-														<td><input type="text" class="form-control margin-top-xs" name="quantidadeSaida"></td>
-														<td><input type="text" placeholder="Digite o Nome do Departamento" class="form-control margin-top-xs" name="departamentoDestino"/></td>
+														<td><input required type="text" class="form-control margin-top-xs" name="quantidadeSaida"></td>
+														<td><input required type="text" placeholder="Digite o Nome do Departamento" class="form-control margin-top-xs" name="departamentoDestino"/></td>
 														<td><button type="submit" class="btn btn-primary pull-right"> Registrar Saída</button></td>
 													</form>
 												</tr>

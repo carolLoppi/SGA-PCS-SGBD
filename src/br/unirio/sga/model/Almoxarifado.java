@@ -16,6 +16,24 @@ public class Almoxarifado {
 		this.endereco = endereco;
 		this.setores = setores;
 	}
+	
+	
+	
+	
+	public Almoxarifado(Integer id, String codigo) {
+		super();
+		this.id = id;
+		this.codigo = codigo;
+	}
+
+
+
+
+	public Almoxarifado() {
+		super();
+	}
+
+
 	public Almoxarifado(Integer id) {
 		super();
 		this.id = id;
@@ -29,11 +47,11 @@ public class Almoxarifado {
 		this.id = id;
 	}
 
-	public String getCod() {
+	public String getCodigo() {
 		return codigo;
 	}
 
-	public void setCod(String cod) {
+	public void setCodigo(String cod) {
 		this.codigo = cod;
 	}
 

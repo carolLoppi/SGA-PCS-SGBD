@@ -7,9 +7,9 @@ import br.unirio.sga.dao.SetorDAO;
 import br.unirio.sga.model.Setor;
 
 public class SetorService {
-	public static List<Setor> recuperarListaSetores() {
+	public static List<Setor> recuperarListaSetores(Integer idAlmoxarifado) {
 		try {
-			return SetorDAO.getTodosSetores();
+			return SetorDAO.getTodosSetores(idAlmoxarifado);
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return null;
